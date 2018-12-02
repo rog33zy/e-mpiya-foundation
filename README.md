@@ -54,6 +54,9 @@ So, for now;
 		
 		Install Laravel: ``` composer create-project --prefer-dist laravel/laravel e-mpiya-foundation ```
 		
+		We will also use the basic authentication scaffolding ``` php artisan make:auth ```
+		In the migration file ``` e-mpiya-foundation\database\migrations\2014_10_12_000000_create_users_table.php ``` we will add a mobile number field: ``` $table->string('mobile')->unique(); ```
+		
 		Now Laravel ships with Bootstrap frontend preset, but we will be using [Zurb Foundation](https://foundation.zurb.com/). By the way, just to make it clear, this repository is *e-mpiya-foundation*, but that foundation does not refer to Foundation frontend scripting, it's just a coincindence, I meant foundation as in basis or groundwork for the payment system.
 		
 		Anyhow, to achieve this, we will be using [Zurb Foundation Frontend Preset For Laravel Framework 5.5 and Up](https://github.com/laravel-frontend-presets/zurb-foundation)
@@ -66,7 +69,16 @@ So, for now;
 		
 		Then run: ``` npm run dev ``` OR ``` npm run development ```
 		
-		We'll stop here since we are not doing any database integration.
+		To avaoid errors during migration, we need to edit: ``` app\Providers\AppServiceProvider.php ``` by adding ``` use Illuminate\Support\Facades\Schema; ``` and modifying **Boot** as follows:
+		
+		```php
+		public function boot()
+		{
+			Schema::defaultStringLength(191);
+		}
+		```
+		
+		Next, we'll run the database migration to support basic authentication: ``` php artisan migrate ```
 		
 		Now, I think we will only concern ourselves with basically four (4) folders:
 		* Views: ``` e-mpiya-foundation\resources\views\ ```
