@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }} {{ app()->version() }}</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -21,7 +21,7 @@
 
           <div class="top-bar-left">
             <ul class="dropdown menu" data-dropdown-menu>
-              <li class="menu-text">{{ config('app.name', 'Laravel') }} {{ app()->version() }}</li>
+              <li class="menu-text">{{ config('app.name', 'Laravel') }}</li>
             </ul>
           </div>
 
@@ -59,6 +59,13 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+	<script>
+		$('.mobile-network').change(function(e){
+			var selectedValue = $(this).val();
+			document.getElementById('user-mobile').name = selectedValue;
+			$('#mobile-number').html('<span class="prefix"><strong>'+selectedValue+' Number</strong></span>')
+		});
+	</script>
     <script>
         $(document).foundation();
     </script>

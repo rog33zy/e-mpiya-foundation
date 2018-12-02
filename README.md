@@ -69,6 +69,15 @@ So, for now;
 		
 		Then run: ``` npm run dev ``` OR ``` npm run development ```
 		
+		To avaoid errors during migration, we need to edit: ``` app\Providers\AppServiceProvider.php ``` by adding ``` use Illuminate\Support\Facades\Schema; ``` and modifying **Boot** as follows:
+		
+		```php
+		public function boot()
+		{
+			Schema::defaultStringLength(191);
+		}
+		```
+		
 		Next, we'll run the database migration to support basic authentication: ``` php artisan migrate ```
 		
 		Now, I think we will only concern ourselves with basically four (4) folders:
