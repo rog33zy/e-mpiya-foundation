@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-workspace name="MoMo Services" soapui-version="5.3.0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:project name="RequestPayment">E:/MoMo WSDL/MoMo Web Services/RequestPayment-soapui-project.xml</con:project>
+  <con:project name="DepositMobileMoney">E:/MoMo WSDL/MoMo Web Services/DepositMobileMoney-soapui-project.xml</con:project>
+  <con:project name="QueryThirdPartyAccount">E:/MoMo WSDL/MoMo Web Services/QueryThirdPartyAccount-soapui-project.xml</con:project>
+  <con:project name="ConfirmThirdPartyPayment">E:/MoMo WSDL/MoMo Web Services/ConfirmThirdPartyPayment-soapui-project.xml</con:project>
+  <con:project name="requestpaymentcompleted_service_1_0">E:/MoMo WSDL/MoMo Web Services/requestpaymentcompleted-service-1-0-soapui-project.xml</con:project>
+  <con:collectInfoForSupport>false</con:collectInfoForSupport>
+</con:soapui-workspace>

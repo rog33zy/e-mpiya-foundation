@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="caa7ba7c-5455-420a-a43a-e5d3993e03ff" activeEnvironment="Default" name="DepositMobileMoney" resourceRoot="" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="b711d275-2659-442a-a903-ba20e9c7963e" wsaVersion="NONE" name="UMMServicePortBinding" type="wsdl" bindingName="{http://b2b.mobilemoney.mtn.zm_v1.0/}UMMServicePortBinding" soapVersion="1_1" anonymous="optional" definition="file:/E:/MoMo%20WSDL/MobileMoney-SOAP/1.7/DepositMobileMoney.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\E:\MoMo%20WSDL\MobileMoney-SOAP\1.7\DepositMobileMoney.wsdl"><con:part><con:url>file:\E:\MoMo%20WSDL\MobileMoney-SOAP\1.7\DepositMobileMoney.wsdl</con:url><con:content><![CDATA[<!--Name: 		UMMService_ZM
+Version:     1.0
+Author:       Wipro
+Comments: Initial Version
+
+Version			Description
+1.0				Created the WSDL with 4 operation for Mobile Money -Third Party System integration-->
+<definitions name="UMMServiceService" targetNamespace="http://b2b.mobilemoney.mtn.zm_v1.0/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://b2b.mobilemoney.mtn.zm_v1.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <types>
+    <xs:schema targetNamespace="http://b2b.mobilemoney.mtn.zm_v1.0/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="processRequest" type="tns:processRequest"/>
+      <xs:element name="processRequestResponse" type="tns:processRequestResponse"/>
+      <xs:complexType name="processRequest">
+        <xs:sequence>
+          <xs:element name="serviceId" type="xs:int"/>
+          <xs:element name="parameter" type="tns:parameter" minOccurs="0" maxOccurs="20"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="parameter">
+        <xs:sequence>
+          <xs:element name="name" minOccurs="0">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:minLength value="1"/>
+                <xs:maxLength value="30"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="value" minOccurs="0">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:minLength value="1"/>
+                <xs:maxLength value="140"/>
+                <xs:pattern value="([A-Za-z0-9_+:, .{\-}])*"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="processRequestResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:parameter" minOccurs="0" maxOccurs="20"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="DepositMobileMoneyRequest">
+    <part name="parameters" element="tns:processRequest"/>
+  </message>
+  <message name="DepositMobileMoneyResponse">
+    <part name="parameters" element="tns:processRequestResponse"/>
+  </message>
+  <portType name="UMMService">
+    <!--Used  by Third Party System for Fund Transfer / Reversal to the subscriber's Mobile Money Account-->
+    <operation name="DepositMobileMoney">
+      <input message="tns:DepositMobileMoneyRequest" wsam:Action="http://b2b.mobilemoney.mtn.ug_v1.0/UMMService/DepositMobileMoneyRequest"/>
+      <output message="tns:DepositMobileMoneyResponse" wsam:Action="http://b2b.mobilemoney.mtn.ug_v1.0/UMMService/DepositMobileMoneyResponse"/>
+    </operation>
+  </portType>
+  <binding name="UMMServicePortBinding" type="tns:UMMService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="DepositMobileMoney">
+      <soap:operation soapAction="POST"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="UMMServiceService">
+    <port name="UMMServicePort" binding="tns:UMMServicePortBinding">
+      <soap:address location="http://10.0.152.65:8080/ThirdPartyServiceUMMImpl/UMMServiceService"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://10.0.152.65:8080/ThirdPartyServiceUMMImpl/UMMServiceService</con:endpoint><con:endpoint>http://DESKTOP-G4702VF:8080/mockUMMServicePortBinding</con:endpoint></con:endpoints><con:operation id="ef115c89-ac5a-43f0-a1f4-1d58c9e9bf54" isOneWay="false" action="POST" name="DepositMobileMoney" bindingOperationName="DepositMobileMoney" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b3a11df4-d6f3-4f23-adec-2d1840a4bd37" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/mockUMMServicePortBinding</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:b2b="http://b2b.mobilemoney.mtn.zm_v1.0/">
+	<soapenv:Header>
+		<RequestSOAPHeader xmlns="http://www.huawei.com.cn/schema/common/v2_1">
+			<spId>35000001</spId>
+			<spPassword>de96d901b3bad1db2aab76b7b0b202f2</spPassword>
+			<bundleID>256000039</bundleID>
+			<serviceId>35000001000035</serviceId>
+			<timeStamp>20100727</timeStamp>
+		</RequestSOAPHeader>
+	</soapenv:Header>
+	<soapenv:Body>
+		<b2b:processRequest>
+			<serviceId>201</serviceId>
+			<parameter>
+				<name>ProcessingNumber</name>
+				<value>555</value>
+			</parameter>
+			<parameter>
+				<name>serviceId</name>
+				<value>102</value>
+			</parameter>
+			<parameter>
+				<name>SenderID</name>
+				<value>MOM</value>
+			</parameter>
+			<parameter>
+				<name>PrefLang</name>
+				<value>121212121</value>
+			</parameter>
+			<parameter>
+				<name>OpCoID</name>
+				<value>0</value>
+			</parameter>
+			<parameter>
+				<name>MSISDNNum</name>
+				<value> FRI:46733491234/MSISDN </value>
+			</parameter>
+			<parameter>
+				<name>Amount</name>
+				<value>10</value>
+			</parameter>
+			<parameter>
+				<name>Narration</name>
+				<value> FRI:1212 @water.company/SP </value>
+			</parameter>
+			<parameter>
+				<name>IMSINum</name>
+				<value>86</value>
+			</parameter>
+			<parameter>
+				<name>OrderDateTime</name>
+				<value>20100727</value>
+			</parameter>
+			<parameter>
+				<name>CurrCode</name>
+				<value>USD</value>
+			</parameter>
+		</b2b:processRequest>
+	</soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="POST"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:mockService id="2c58e5c6-b281-47e6-9718-77b40129fc47" port="8080" path="/mockUMMServicePortBinding" host="DESKTOP-G4702VF" name="DepositMobileMoneyResponse" bindToHostOnly="false" docroot=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="DepositMobileMoney" id="61ee6fa5-65ed-4830-8118-ffeb6ea02b9d" interface="UMMServicePortBinding" operation="DepositMobileMoney"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="a6932a1b-11c4-4c46-a548-f04dae5bd3c9" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<soapenv:Body>
+		<ns1:processRequestResponse xmlns:ns1="http://b2b.mobilemoney.mtn.zm_v1.0/">
+			<return>
+				<name>ProcessingNumber</name>
+				<value>123</value>
+			</return>
+			<return>
+				<name>SenderID</name>
+				<value>MOM</value>
+			</return>
+			<return>
+				<name>StatusCode</name>
+				<value>234</value>
+			</return>
+			<return>
+				<name>StatusDesc</name>
+				<value>FAILED</value>
+			</return>
+			<return>
+				<name>OpCoID</name>
+				<value>0</value>
+			</return>
+			<return>
+				<name>IMSINum</name>
+				<value>86</value>
+			</return>
+			<return>
+				<name>MSISDNNum</name>
+				<value>13132132000</value>
+			</return>
+			<return>
+				<name>OrderDateTime</name>
+				<value>20100727</value>
+			</return>
+			<return>
+				<name>ThirdPartyAcctRef</name>
+				<value>121212</value>
+			</return>
+			<return>
+				<name>MOMTransactionID</name>
+				<value>456</value>
+			</return>
+		</ns1:processRequestResponse>
+	</soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="POST"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

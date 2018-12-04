@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="14f8f5aa-0793-4b63-b244-317fb0941986" activeEnvironment="Default" name="QueryThirdPartyAccount" resourceRoot="" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="af83d7f6-d3b1-485e-a2f4-b3cb53742682" wsaVersion="NONE" name="UMMServicePortBinding" type="wsdl" bindingName="{http://b2b.mobilemoney.mtn.zm_v1.0/}UMMServicePortBinding" soapVersion="1_1" anonymous="optional" definition="file:/E:/MoMo%20WSDL/MobileMoney-SOAP/1.7/QueryThirdPartyAccount.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\E:\MoMo%20WSDL\MobileMoney-SOAP\1.7\QueryThirdPartyAccount.wsdl"><con:part><con:url>file:\E:\MoMo%20WSDL\MobileMoney-SOAP\1.7\QueryThirdPartyAccount.wsdl</con:url><con:content><![CDATA[<!--edited with XMLSpy v2010 rel. 2 (http://www.altova.com) by ARIJIT (WIPRO)-->
+<definitions name="UMMServiceService" targetNamespace="http://b2b.mobilemoney.mtn.zm_v1.0/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://b2b.mobilemoney.mtn.zm_v1.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <types>
+    <xs:schema targetNamespace="http://b2b.mobilemoney.mtn.zm_v1.0/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="processRequest" type="tns:processRequest"/>
+      <xs:element name="processRequestResponse" type="tns:processRequestResponse"/>
+      <xs:complexType name="processRequest">
+        <xs:sequence>
+          <xs:element name="serviceId" type="xs:int"/>
+          <xs:element name="parameter" type="tns:parameter" minOccurs="0" maxOccurs="20"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="parameter">
+        <xs:sequence>
+          <xs:element name="name" minOccurs="0">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:minLength value="1"/>
+                <xs:maxLength value="30"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="value" minOccurs="0">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:minLength value="1"/>
+                <xs:maxLength value="140"/>
+                <xs:pattern value="([A-Za-z0-9_+:, .{\-}])*"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="processRequestResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:parameter" minOccurs="0" maxOccurs="20"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="QueryThirdPartyAccountRequest">
+    <part name="parameters" element="tns:processRequest"/>
+  </message>
+  <message name="QueryThirdPartyAccountResponse">
+    <part name="parameters" element="tns:processRequestResponse"/>
+  </message>
+  <portType name="UMMService">
+    <operation name="QueryThirdPartyAccount">
+      <input message="tns:QueryThirdPartyAccountRequest" wsam:Action="http://b2b.mobilemoney.mtn.zm_v1.0/UMMService/QueryThirdPartyAccountRequest"/>
+      <output message="tns:QueryThirdPartyAccountResponse" wsam:Action="http://b2b.mobilemoney.mtn.zm_v1.0/UMMService/QueryThirdPartyAccountResponse"/>
+    </operation>
+  </portType>
+  <binding name="UMMServicePortBinding" type="tns:UMMService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="QueryThirdPartyAccount">
+      <soap:operation soapAction="GET" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="UMMServiceService">
+    <port name="UMMServicePort" binding="tns:UMMServicePortBinding">
+      <soap:address location="http://10.0.152.65:8080/ThirdPartyServiceUMMImpl/UMMServiceService"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://10.0.152.65:8080/ThirdPartyServiceUMMImpl/UMMServiceService</con:endpoint><con:endpoint>http://DESKTOP-G4702VF:8080/mockUMMServicePortBinding</con:endpoint></con:endpoints><con:operation id="cba8d8c2-39a6-4818-82c7-ff4d33690c60" isOneWay="false" action="GET" name="QueryThirdPartyAccount" bindingOperationName="QueryThirdPartyAccount" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7a56c7b8-bf16-4ea0-a0ba-5963dd5b223e" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.0.152.65:8080/ThirdPartyServiceUMMImpl/UMMServiceService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<soapenv:Header>
+		<ns1:NotifySOAPHeader xmlns:ns1="http://www.huawei.com.cn/schema/common/v2_1">
+			<ns1:traceUniqueID>504021505821207271704550002002</ns1:traceUniqueID>
+		</ns1:NotifySOAPHeader>
+	</soapenv:Header>
+	<soapenv:Body>
+		<ns2:processRequest xmlns:ns2="http://b2b.mobilemoney.mtn.zm_v1.0/">
+			<serviceId>100</serviceId>
+			<parameter>
+				<name>ProcessingNumber</name>
+				<value>1212121</value>
+			</parameter>
+			<parameter>
+				<name>senderID</name>
+				<value>MOM</value>
+			</parameter>
+			<parameter>
+				<name>AcctRef</name>
+				<value> FRI:46733491234/MSISDN </value>
+			</parameter>
+			<parameter>
+				<name>PrefLang</name>
+				<value>121212121</value>
+			</parameter>
+			<parameter>
+				<name>OpCoID</name>
+				<value>0</value>
+			</parameter>
+		</ns2:processRequest>
+	</soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="GET"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:mockService id="de17fa7c-3e3a-4c9e-bded-f28c9a11500d" port="8080" path="/mockUMMServicePortBinding" host="DESKTOP-G4702VF" name="QueryThirdPartyAccountResponse"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="QueryThirdPartyAccount" id="2079b19d-8aa3-4872-8d46-2be976bbca12" interface="UMMServicePortBinding" operation="QueryThirdPartyAccount"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="f29aba11-bddf-43b7-bb48-96b409be6d08" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:b2b="http://b2b.mobilemoney.mtn.zm_v1.0/"> 
+	<soapenv:Header/>
+	<soapenv:Body>
+		<b2b:processRequestResponse>
+			<return>
+				<name>DueAmount</name>
+				<value>121212</value>
+			</return>
+			<return>
+				<name>BalanceAmount</name>
+				<value>2121</value>
+			</return>
+			<return>
+				<name>MinDueAmount</name>
+				<value>121212</value>
+			</return>
+			<return>
+				<name>Narration</name>
+				<value>121212</value>
+			</return>
+			<return>
+				<name>ProcessingNumber</name>
+				<value>121212</value>
+			</return>
+			<return>
+				<name>StatusCode</name>
+				<value>121212</value>
+			</return>
+			<return>
+				<name>ThirdPartyAcctRef</name>
+				<value>121212</value>
+			</return>
+			<return>
+				<name>StatusDesc</name>
+				<value>121212</value>
+			</return>
+			<return>
+				<name>CurrCode</name>
+				<value>USD</value>
+			</return>
+		</b2b:processRequestResponse>
+	</soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="GET"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
