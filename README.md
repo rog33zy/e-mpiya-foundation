@@ -28,16 +28,31 @@ So, for now;
 	1.	**Identify API:**
 	
 		It seems I was rushing things, this was already mentioned adove. Download API: [MobileMoney SOAP API specification](https://developer.mtn.com/community/portal/site.action?s=devsite&c=detailsResource&resourceId=613&categoryId=DEV1000002&search=DEV1000002&resourceName=MobileMoney%20API%20specification%20v11&h=firresource&currentPage=1&osIds=DEV2000001,DEV2000002,DEV2000003,DEV2000004,DEV2000005&flag=fromRight&fromApiResource=yes)
+		
+		In this repository, find it here: [SDP Solution API Reference PDF](readme_assets/SDP Solution API Reference (MobileMoney,Security).pdf)
+		
 	2.	**Get WSDL:**
 	
 		Then download and extract WSDL files to help develop web services: [MobileMoney-1_7 phase 7_1](https://developer.mtn.com/community/portal/site.action?s=devsite&c=detailsResource&lang=en&t=web&resourceId=555&resourceName=%3Cspan%20style=%22color:#1483BB;background:#FFFFFF;%22%3EMobileMoney%3C/span%3E-1_7%20phase%207_1&categoryId=&h=resourceSearch&searchName=&search=&currentPage=1)
 		
+		In this repository, find them here: [MobileMoney-SOAP 1.7](tree/master/MoMo%20WSDL/MobileMoney-SOAP/1.7)
+		
 	3.	**Import WSDL into SOAPUI:**
 	
-		TODO
+		Launch SoapUI, click create new SOAP project and then locate the relevant WSDL file to import. In our case, we started with *RequestPayment.wsdl* located in ``` e-mpiya-foundation\MoMo WSDL\MobileMoney-SOAP\1.7 ```, here: [RequestPayment.wsdl](blob/master/MoMo%20WSDL/MobileMoney-SOAP/1.7/RequestPayment.wsdl)
+		
+		![Import RequestPayment WSDL](readme_assets/import-request-payment-wsdl.jpg)
+		
+		Do the same for the other four (4) WSDL files. Final result should look as shown below:
+		
+		![All WSDL Files Imported](readme_assets/import-all-web-services-wsdl.jpg)
+		
 	4.	**Test Services:**
 	
-		TODO
+		At this stage, you will need to create a MockService for each of the default requests, created with each web service and then make SOAP Request and Response messages as shown in the [SDP Solution API Reference PDF](readme_assets/SDP Solution API Reference (MobileMoney,Security).pdf). After running the MockService on a specified URL and port number, a SOAP request sent to the MockService URL and port number should return a Response as shown below:
+		
+		![Web and MockService Running With Response](readme_assets/web-and-mockservices.jpg)
+		
 2.	**Develop Web Client**
 	1.	**Install and Setup Web Client:**
 
