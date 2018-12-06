@@ -29,7 +29,7 @@ So, for now;
 	
 		It seems I was rushing things, this was already mentioned adove. Download API: [MobileMoney SOAP API specification](https://developer.mtn.com/community/portal/site.action?s=devsite&c=detailsResource&resourceId=613&categoryId=DEV1000002&search=DEV1000002&resourceName=MobileMoney%20API%20specification%20v11&h=firresource&currentPage=1&osIds=DEV2000001,DEV2000002,DEV2000003,DEV2000004,DEV2000005&flag=fromRight&fromApiResource=yes)
 		
-		In this repository, find it here: [SDP Solution API Reference PDF](readme_assets/SDP Solution API Reference (MobileMoney,Security).pdf)
+		In this repository, find it here: [SDP Solution API Reference PDF](blob/develop/readme_assets/SDP%20Solution%20API%20Reference%20(MobileMoney%2CSecurity).pdf)
 		
 	2.	**Get WSDL:**
 	
@@ -49,7 +49,7 @@ So, for now;
 		
 	4.	**Test Services:**
 	
-		At this stage, you will need to create a MockService for each of the default requests, created with each web service and then make SOAP Request and Response messages as shown in the [SDP Solution API Reference PDF](readme_assets/SDP Solution API Reference (MobileMoney,Security).pdf). After running the MockService on a specified URL and port number, a SOAP request sent to the MockService URL and port number should return a Response as shown below:
+		At this stage, you will need to create a MockService for each of the default requests, created with each web service and then make SOAP Request and Response messages as shown in the [SDP Solution API Reference PDF](blob/develop/readme_assets/SDP%20Solution%20API%20Reference%20(MobileMoney%2CSecurity).pdf). After running the MockService on a specified URL and port number, a SOAP request sent to the MockService URL and port number should return a Response as shown below:
 		
 		![Web and MockService Running With Response](readme_assets/web-and-mockservices.jpg)
 		
