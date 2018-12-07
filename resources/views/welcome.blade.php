@@ -102,25 +102,8 @@
             <div class="content">
 
                 <div class="title m-b-md">
-                    Laravel
-                    <p class="versioninfo">Version {{ app()->version() }}</p>
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-
-                <div class="foundation_button_test">
-                    <p class="framwork_title">Zurb Foundation 6.5.0</p>
-                    <a class="button primary" href="#">Primary</a>
-                    <a class="button secondary" href="#">Secondary</a>
-                    <a class="button success" href="#">Success</a>
-                    <a class="button alert" href="#">Alert</a>
-                    <a class="button warning" href="#">Warning</a>
+                    e-Mpiya OMPS
+                    <p class="versioninfo">Online and Mobile Payment System</p>
                 </div>
 
             </div>
