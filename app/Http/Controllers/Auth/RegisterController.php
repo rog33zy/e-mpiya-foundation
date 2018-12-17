@@ -52,7 +52,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-			'MobileNetwork' => 'required_with:Number',
+			'MobileNetwork' => 'required|required_with:Number',
 			'Airtel' => 'required_if:mobile_network,Airtel|regex:(^097\d{7}$)',
 			'MTN' => 'required_if:mobile_network,MTN|regex:(^096\d{7}$)',
 			'Zamtel' => 'required_if:mobile_network,Zamtel|regex:(^095\d{7}$)',

@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'e-Mpiya OMPS') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -21,7 +21,7 @@
 
           <div class="top-bar-left">
             <ul class="dropdown menu" data-dropdown-menu>
-              <li class="menu-text">{{ config('app.name', 'Laravel') }}</li>
+              <li class="menu-text"><a href="{{ route('home') }}">{{ config('app.name', 'e-Mpiya OMPS') }}</a></li>
             </ul>
           </div>
 
