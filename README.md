@@ -2,15 +2,15 @@
 e-Mpiya Online and Mobile Payment System (OMPS) is a [One Ziko](https://oneziko.com/) payment service that leverages on existing payment options to bridge financial inclusion in Zambia. This repository is the foundation on which this payment system based. Feel free to contribute, use and improve upon it.
 
 ## Table Of Contents (TOC)
-1.	Setup SoapUI Test Environment
+1.	Running Web Client
+	1.	Running Web Client
+	2.	Create User and Login
+
+2.	Setup SoapUI Test Environment
 	1.	Identify API
 	2.	Get WSDL
 	3.	Import WSDL into SOAPUI
 	4.	Test Services
-2.	Develop Web Client
-	1.	Basic Web Form
-	2.	Using Laravel Blade
-	3.	Test With SoapUI
 	
 ## Some Things To Note
 With the TOC outlined above, we can start by aligning with expectations. Ideally, it would be good to integrate with all three (3) mobile network operators (MNOs) in Zambia, i.e. Airtel, MTN and ZAMTEL, and also other mobile financial services such as Zoona, Kazang, SpeedPay, etc. But as it stands, we are restricted by non-availability of public Application Programming Interfaces (API's) for developers to work with from the mentioned services. Hopefully, by the time you are reading this, that would have changed.
@@ -24,7 +24,49 @@ So, for now;
 * And one last thing, I don't think we will include any database integration with this repository, you can decide how and what to use to store data. We will be satisfied with successfully requesting and responding to the API as required.
 
 ## Filling In The Blanks
-1.	**Setup SoapUI Test Environment**
+1.	**Running Web Client**
+	1.	**Running Web Client:**
+
+		The following are the server requirements:
+		* PHP >= 7.1.3
+		* OpenSSL PHP Extension
+		* PDO PHP Extension
+		* Mbstring PHP Extension
+		* Tokenizer PHP Extension
+		* XML PHP Extension
+		* Ctype PHP Extension
+		* JSON PHP Extension
+		* BCMath PHP Extension
+		
+		Clone and cd into this project folder OR download this project, then extract ``` e-mpiya-foundation ``` project folder into your server root and then visit ``` http://localhost/e-mpiya-foundation ``` using your browser.
+	
+	2. **Creating MySQL or MariaDB App Database**
+		
+		You can create the App database by either:
+		1. logging into your phpMyAdmin, creating ``` empiya_db ``` database, with collation ``` utf8mb4_unicode_ci ``` OR
+		2. logging into your phpMyAdmin, clicking SQL tab and then, copying, pasting and running the SQL queries in the file ``` e-mpiya-foundation\SQL\e-mpiya-dump.sql ```.
+		
+		![phpMyAdmin SQL Dump](readme_assets/php-my-admin-sql-dump.jpg)
+		
+		You will now need to confirm if *DB_DATABASE*, *DB_USERNAME* and *DB_PASSWORD* are correct according to your database configuration in ``` e-mpiya-foundation\.env ``` file.
+		
+	3.	**Create User and Login:**
+	
+		Click on Register, that will take you to ``` http://localhost/e-mpiya-foundation/register ```. Enter the required details, after which you will be logged in and presented  with the home page with dashboard.
+		
+		![Registration Page](readme_assets/register-screen.jpg)
+		
+		![Home page Dashboard](readme_assets/dashboard.jpg)
+		
+		Click *Deposit MTN Money* or *MTN Bill Payment API initiated by Partner* and you will get to one of the screens shown below. Enter an amount and click *Pay Now*. You will get a server error as the MTN API Web Services are not running, you will set those up in step 2 below.
+		
+		![Deposit MTN Money](readme_assets/deposit-mtn-money.jpg)
+		
+		![MTN Bill Payment API initiated by Partner](readme_assets/bill-payment-by-partner.jpg)
+		
+		![Server Unreachable](readme_assets/server-unreachable.jpg)
+		
+2.	**Setup SoapUI Test Environment**
 	1.	**Identify API:**
 	
 		It seems I was rushing things, this was already mentioned adove. Download API: [MobileMoney SOAP API specification](https://developer.mtn.com/community/portal/site.action?s=devsite&c=detailsResource&resourceId=613&categoryId=DEV1000002&search=DEV1000002&resourceName=MobileMoney%20API%20specification%20v11&h=firresource&currentPage=1&osIds=DEV2000001,DEV2000002,DEV2000003,DEV2000004,DEV2000005&flag=fromRight&fromApiResource=yes)
@@ -52,61 +94,3 @@ So, for now;
 		At this stage, you will need to create a MockService for each of the default requests, created with each web service and then make SOAP Request and Response messages as shown in the [SDP Solution API Reference PDF](readme_assets/SDP%20Solution%20API%20Reference%20(MobileMoney%2CSecurity).pdf). After running the MockService on a specified URL and port number, a SOAP request sent to the MockService URL and port number should return a Response as shown below:
 		
 		![Web and MockService Running With Response](readme_assets/web-and-mockservices.jpg)
-		
-2.	**Develop Web Client**
-	1.	**Install and Setup Web Client:**
-
-		The following are the server requirements:
-		* PHP >= 7.1.3
-		* OpenSSL PHP Extension
-		* PDO PHP Extension
-		* Mbstring PHP Extension
-		* Tokenizer PHP Extension
-		* XML PHP Extension
-		* Ctype PHP Extension
-		* JSON PHP Extension
-		* BCMath PHP Extension
-		
-		Install Laravel: ``` composer create-project --prefer-dist laravel/laravel e-mpiya-foundation ```
-		
-		We will also use the basic authentication scaffolding ``` php artisan make:auth ```
-		In the migration file ``` e-mpiya-foundation\database\migrations\2014_10_12_000000_create_users_table.php ``` we will add a mobile number field: ``` $table->string('mobile')->unique(); ```
-		
-		Now Laravel ships with Bootstrap frontend preset, but we will be using [Zurb Foundation](https://foundation.zurb.com/). By the way, just to make it clear, this repository is *e-mpiya-foundation*, but that foundation does not refer to Foundation frontend scripting, it's just a coincindence, I meant foundation as in basis or groundwork for the payment system.
-		
-		Anyhow, to achieve this, we will be using [Zurb Foundation Frontend Preset For Laravel Framework 5.5 and Up](https://github.com/laravel-frontend-presets/zurb-foundation)
-		
-		Install: ``` composer require laravel-frontend-presets/zurb-foundation ```
-		
-		Set Foundation preset: ``` php artisan preset foundation-auth ```
-		
-		Run: ``` npm install ```
-		
-		Then run: ``` npm run dev ``` OR ``` npm run development ```
-		
-		To avaoid errors during migration, we need to edit: ``` app\Providers\AppServiceProvider.php ``` by adding ``` use Illuminate\Support\Facades\Schema; ``` and modifying **Boot** as follows:
-		
-		```php
-		public function boot()
-		{
-			Schema::defaultStringLength(191);
-		}
-		```
-		
-		Next, we'll run the database migration to support basic authentication: ``` php artisan migrate ```
-		
-		Now, I think we will only concern ourselves with basically four (4) folders:
-		* Views: ``` e-mpiya-foundation\resources\views\ ```
-		* Routes: ``` e-mpiya-foundation\routes\ ```
-		* Controllers: ``` e-mpiya-foundation\app\Http\Controllers\ ```
-		* We might also have to frequent the ``` e-mpiya-foundation\public ``` folder to handle CSS and JS dependency
-		
-	2.	**Basic Web Form:**
-	
-		TODO
-	3.	**Using Laravel Blade:**
-	
-		TODO
-	4.	**Test With SoapUI:**
-	
-		TODO
