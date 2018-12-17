@@ -92,7 +92,7 @@
 							<span class="error">{{ $error }}</span>
 						@endforeach
 					@endif
-					<span class="optional">(Optional) Your Mobile Number, e.g. 095xxxxxxx or 096xxxxxxx or 097xxxxxxx</span>
+					<span class="optional">(Required) Your Mobile Number, e.g. 095xxxxxxx or 096xxxxxxx or 097xxxxxxx</span>
 				</div>
 
                 <div class="password">

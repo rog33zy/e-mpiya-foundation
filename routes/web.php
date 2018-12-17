@@ -18,11 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
+// MTN API Routes
+Route::get('/mtn/deposit', 'MTNRequestController@mTNDeposit')->name('mtn_deposit');
+Route::get('/mtn/payment', 'MTNRequestController@mTNPayment')->name('mtn_payment');
+Route::post('/mtn/deposit/post', 'MTNRequestController@postMTNDeposit')->name('post_mtn_deposit');
+Route::post('/mtn/payment/post', 'MTNRequestController@postMTNPayment')->name('post_mtn_payment');

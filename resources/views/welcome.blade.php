@@ -8,7 +8,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>e-Mpiya OMPS</title>
+        <title>e-Mpiya OMPS Foundation</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -103,7 +103,7 @@
 
                 <div class="title m-b-md">
                     e-Mpiya OMPS
-                    <p class="versioninfo">Online and Mobile Payment System</p>
+                    <p class="versioninfo">Online and Mobile Payment System<br>Foundation</p>
                 </div>
 
             </div>
