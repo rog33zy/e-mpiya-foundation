@@ -36,7 +36,7 @@
 										<div class="large-12 medium-12 small-12 column"><span class="label alert">{{ $error }}</span></div>
 									@endforeach
 								@endif
-								<span class="success">(Required) MTN Money Mobile Number To Deposit To, e.g: 096x xxx xxx</span>
+								<span class="label success">(Required) MTN Money Mobile Number To Deposit To, e.g: 096x xxx xxx</span>
 							</div>
 							<!-- Amount To Deposit From MTN Money -->
 							<div class="large-12 medium-12 small-12 columns">
@@ -53,7 +53,7 @@
 										<div class="large-12 medium-12 small-12 column"><span class="label alert">{{ $error }}</span></div>
 									@endforeach
 								@endif
-								<span class="success">(Required) Amount To Deposit From MTN Money</span>
+								<span class="label success">(Required) Amount To Deposit From MTN Money</span>
 							</div>
 							<div class="large-12 medium-12 small-12 columns">
 								<div class="expanded button-group">
