@@ -52,7 +52,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-			'MobileNetwork' => 'required|required_with:Number',
+			'mobile_network' => 'required|required_with:Number',
 			'Airtel' => 'required_if:mobile_network,Airtel|regex:(^097\d{7}$)',
 			'MTN' => 'required_if:mobile_network,MTN|regex:(^096\d{7}$)',
 			'Zamtel' => 'required_if:mobile_network,Zamtel|regex:(^095\d{7}$)',
@@ -80,14 +80,25 @@ class RegisterController extends Controller
 			$mobile_service_provider_id = 4;
 		}
 		// Set user mobile number
-		if (!is_null($data['Airtel'])) {
-			$user_mobile_number = $data['Airtel'];
-		} elseif (!is_null($data['MTN'])) {
-			$user_mobile_number = $data['MTN'];
-		} elseif (!is_null($data['Zamtel'])) {
-			$user_mobile_number = $data['Zamtel'];
-		} elseif (!is_null($data['Other'])) {
-			$user_mobile_number = $data['Other'];
+		if (isset($data['Airtel'])) {
+			if (!is_null($data['Airtel'])) {
+				$user_mobile_number = $data['Airtel'];
+			}
+		}
+		if (isset($data['MTN'])) {
+			if (!is_null($data['MTN'])) {
+				$user_mobile_number = $data['MTN'];
+			}
+		}
+		if (isset($data['Zamtel'])) {
+			if (!is_null($data['Zamtel'])) {
+				$user_mobile_number = $data['Zamtel'];
+			}
+		}
+		if (isset($data['Other'])) {
+			if (!is_null($data['Other'])) {
+				$user_mobile_number = $data['Other'];
+			}
 		}
         return User::create([
             'name' => $data['name'],
