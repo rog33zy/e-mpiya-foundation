@@ -28,6 +28,7 @@ So, for now;
 ## Filling In The Blanks
 1.	**Running Web Client**
 	1.	**Running Web Client:**
+	**STOP** if you do not intend to use PHP for your web client, and are planning on using another programming language or technology, skip this stage and head on to step 2: *Setup SoapUI Test Environment* to open or create SOAP webservices and Mockservices to simulate server responses. This section will instruct you on how to run web client using Laravel PHP Framework.
 
 		The following are the server requirements:
 		* PHP >= 7.1.3
