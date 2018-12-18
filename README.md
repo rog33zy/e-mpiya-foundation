@@ -43,7 +43,7 @@ So, for now;
 	2. **Creating MySQL or MariaDB App Database**
 		
 		You can create the App database by either:
-		1. logging into your phpMyAdmin, creating ``` empiya_db ``` database, with collation ``` utf8mb4_unicode_ci ``` OR
+		1. logging into your phpMyAdmin, creating ``` empiya_db ``` database, with collation ``` utf8mb4_unicode_ci ```. Then in CMD or console, running database migrations using ``` php artisan migrate ``` OR
 		2. logging into your phpMyAdmin, clicking SQL tab and then, copying, pasting and running the SQL queries in the file ``` e-mpiya-foundation\SQL\e-mpiya-dump.sql ```.
 		
 		![phpMyAdmin SQL Dump](readme_assets/php-my-admin-sql-dump.jpg)
