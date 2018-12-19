@@ -120,11 +120,10 @@ At this stage, you can open DepositMobileMoney, RequestPayment, etc projects by 
 4. **Customisation**
 
 Feel free to modify or use any ideas from this project to meet your own requirements. If you are not really familiar with the Laravel project structure. These are the critical sections you need to work on in order to customise the project:
-
-    + Controllers: This is where all the magic happens, in here you will find all the code that adds functionality and interacts with database models: ``` e-mpiya-foundation/app/Http/Controllers/ ```
-    + Views: This is the where all the cosmetic work and frontend stuff happens: ``` e-mpiya-foundation/resources/views/ ```
-    + Public: This is where you will find all the assets such as CSS, JS, images, etc: ``` e-mpiya-foundation/public/ ```
-    + Routes: This is where you can specify you web and api urls: ``` e-mpiya-foundation/routes/ ```
+    ..* Controllers: This is where all the magic happens, in here you will find all the code that adds functionality and interacts with database models: ``` e-mpiya-foundation/app/Http/Controllers/ ```
+    ..* Views: This is the where all the cosmetic work and frontend stuff happens: ``` e-mpiya-foundation/resources/views/ ```
+    ..* Public: This is where you will find all the assets such as CSS, JS, images, etc: ``` e-mpiya-foundation/public/ ```
+    ..* Routes: This is where you can specify you web and api urls: ``` e-mpiya-foundation/routes/ ```
 
 *Happy Coding*
 
