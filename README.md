@@ -117,4 +117,4 @@ At this stage, you can open DepositMobileMoney, RequestPayment, etc projects by 
 
 *Happy Coding*
 
-**~ THE END ~**
+~ **THE END** ~
