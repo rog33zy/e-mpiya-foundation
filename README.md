@@ -13,6 +13,8 @@ e-Mpiya Online and Mobile Payment System (OMPS) is a [One Ziko](https://oneziko.
 	4.	Create Mockservices
 
 3.	Test Client and Web Services
+
+4. Customisation
 	
 ## Some Things To Note
 With the TOC outlined above, we can start by aligning with expectations. Ideally, it would be good to integrate with all three (3) mobile network operators (MNOs) in Zambia, i.e. Airtel, MTN and ZAMTEL, and also other mobile financial services such as Zoona, Kazang, SpeedPay, etc. But as it stands, we are restricted by non-availability of public Application Programming Interfaces (API's) for developers to work with from the mentioned services. Hopefully, by the time you are reading this, that would have changed.
@@ -114,6 +116,14 @@ So, for now;
 At this stage, you can open DepositMobileMoney, RequestPayment, etc projects by clicking the *+* icon, double click the Mockservice, e.g. DepositMobileMoneyResponse or RequestPaymentResponse and click the green play icon to start the Mockservice. This time, when you send a request to the server by clicking *Deposit* or *Pay Now* buttons, you should get a response. The response has been formatted in plain text and JSON, which can be manipulated in various ways.
 
 ![Response From Server through SoapUI Mockservice](readme_assets/mockservice-server-response.jpg)
+
+4. **Customisation**
+
+Feel free to modify or use any ideas from this project to meet your own requirements. If you are not really familiar with the Laravel project structure. These are the critical sections you need to work on in order to customise the project:
+    *   Controllers: This is where all the magic happens, in here you will find all the code that adds functionality and interacts with database models: ``` e-mpiya-foundation/app/Http/Controllers/ ```
+    *   Views: This is the where all the cosmetic work and frontend stuff happens: ``` e-mpiya-foundation/resources/views/ ```
+    *   Public: This is where you will find all the assets such as CSS, JS, images, etc: ``` e-mpiya-foundation/public/ ```
+    *   Routes: This is where you can specify you web and api urls: ``` e-mpiya-foundation/routes/ ```
 
 *Happy Coding*
 
