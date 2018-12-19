@@ -208,12 +208,21 @@ XML;
 		} catch (\Exception $e) {
 			return redirect()->back()->withInput()->with('server_error', 'Server Unreachable. Please try again.');
 		}
-		// raw description
-		$raw_description = "";
+		// initiate string response
+		$string_response = "";
+		// initiate response array
+		$json_response = [];
+		// index
+		$index = 0;
 		foreach ($response_xml->xpath('//return') as $return) {
-			$raw_description .= "//" . $return->name . " = " . $return->value . "<br>";
+			// Concatenate string values to string response
+			$string_response .= "//" . $return->name . " = " . $return->value . "<br>";
+		
+			// assign values to response array
+			$json_response[] = ["$return->name" => "$return->value"];
 		}
-		$data['raw_description'] = $raw_description;
+		$data['string_response'] = $string_response;
+		$data['json_response'] = response()->json($json_response);
 		
 		// Redirect to home page with retrieved data
 		return view('home', $data);
@@ -391,12 +400,21 @@ XML;
 		} catch (\Exception $e) {
 			return redirect()->back()->withInput()->with('server_error', 'Server Unreachable. Please try again.');
 		}
-		// raw description
-		$raw_description = "";
+		// initiate string response
+		$string_response = "";
+		// initiate response array
+		$json_response = [];
+		// index
+		$index = 0;
 		foreach ($response_xml->xpath('//return') as $return) {
-			$raw_description .= "//" . $return->name . " = " . $return->value . "<br>";
+			// Concatenate string values to string response
+			$string_response .= "//" . $return->name . " = " . $return->value . "<br>";
+		
+			// assign values to response array
+			$json_response[] = ["$return->name" => "$return->value"];
 		}
-		$data['raw_description'] = $raw_description;
+		$data['string_response'] = $string_response;
+		$data['json_response'] = response()->json($json_response);
 		
 		// Redirect to home page with retrieved data
 		return view('home', $data);
