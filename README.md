@@ -120,10 +120,11 @@ So, for now;
 4. **Customisation**
 
     Feel free to modify or use any ideas from this project to meet your own requirements. If you are not really familiar with the Laravel project structure. These are the critical sections you need to work on in order to customise the project:
-        1. Controllers: This is where all the magic happens, in here you will find all the code that adds functionality and interacts with database models: ``` e-mpiya-foundation/app/Http/Controllers/ ```
-        2. Views: This is the where all the cosmetic work and frontend stuff happens: ``` e-mpiya-foundation/resources/views/ ```
-        3. Public: This is where you will find all the assets such as CSS, JS, images, etc: ``` e-mpiya-foundation/public/ ```
-        4. Routes: This is where you can specify you web and api urls: ``` e-mpiya-foundation/routes/ ```
+    
+        1. Controllers: This is where all the magic happens, in here you will find all the code that adds functionality and interacts with database models: ``` e-mpiya-foundation/app/Http/Controllers/ ```.
+        2. Views: This is the where all the cosmetic work and frontend stuff happens: ``` e-mpiya-foundation/resources/views/ ```.
+        3. Public: This is where you will find all the assets such as CSS, JS, images, etc: ``` e-mpiya-foundation/public/ ```.
+        4. Routes: This is where you can specify you web and api urls: ``` e-mpiya-foundation/routes/ ```.
 
 *Happy Coding*
 
