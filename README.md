@@ -33,32 +33,32 @@ So, for now;
     
 	**STOP** if you do not intend to use PHP for your web client, and are planning on using another programming language or technology, skip this stage and head on to step 2: *Setup SoapUI Test Environment* to open or create SOAP webservices and Mockservices to simulate server responses. This section will instruct you on how to run web client using Laravel PHP Framework.
 
-		The following are the server requirements:
-		* PHP >= 7.1.3
-		* OpenSSL PHP Extension
-		* PDO PHP Extension
-		* Mbstring PHP Extension
-		* Tokenizer PHP Extension
-		* XML PHP Extension
-		* Ctype PHP Extension
-		* JSON PHP Extension
-		* BCMath PHP Extension
-		
-		Clone and cd into this project folder OR download this project, then extract ``` e-mpiya-foundation ``` project folder into your server root and then visit ``` http://localhost/e-mpiya-foundation ``` using your browser.
+    The following are the server requirements:
+    * PHP >= 7.1.3
+    * OpenSSL PHP Extension
+    * PDO PHP Extension
+    * Mbstring PHP Extension
+    * Tokenizer PHP Extension
+    * XML PHP Extension
+    * Ctype PHP Extension
+    * JSON PHP Extension
+    * BCMath PHP Extension
+
+    Clone and cd into this project folder OR download this project, then extract `e-mpiya-foundation` project folder into your server root and then visit `http://localhost/e-mpiya-foundation` using your browser.
 	
 	2. **Creating MySQL or MariaDB App Database**
 		
 		You can create the App database by either:
-		1. logging into your phpMyAdmin, creating ``` empiya_db ``` database, with collation ``` utf8mb4_unicode_ci ```. Then in CMD or console, running database migrations using ``` php artisan migrate ``` OR
-		2. logging into your phpMyAdmin, clicking SQL tab and then, copying, pasting and running the SQL queries in the file ``` e-mpiya-foundation\SQL\e-mpiya-dump.sql ```.
+		1. logging into your phpMyAdmin, creating `empiya_db` database, with collation `utf8mb4_unicode_ci`. Then in CMD or console, running database migrations using `php artisan migrate` OR
+		2. logging into your phpMyAdmin, clicking SQL tab and then, copying, pasting and running the SQL queries in the file `e-mpiya-foundation\SQL\e-mpiya-dump.sql`.
 		
 		![phpMyAdmin SQL Dump](readme_assets/php-my-admin-sql-dump.jpg)
 		
-		You will now need to confirm if *DB_DATABASE*, *DB_USERNAME* and *DB_PASSWORD* are correct according to your database configuration in ``` e-mpiya-foundation\.env ``` file.
+		You will now need to confirm if *DB_DATABASE*, *DB_USERNAME* and *DB_PASSWORD* are correct according to your database configuration in `e-mpiya-foundation\.env` file.
 		
 	3.	**Create User and Login:**
 	
-		Click on Register, that will take you to ``` http://localhost/e-mpiya-foundation/register ```. Enter the required details, after which you will be logged in and presented  with the home page with dashboard.
+		Click on Register, that will take you to `http://localhost/e-mpiya-foundation/register`. Enter the required details, after which you will be logged in and presented  with the home page with dashboard.
 		
 		![Registration Page](readme_assets/register-screen.jpg)
 		
@@ -75,7 +75,7 @@ So, for now;
 2.	**Setup SoapUI Test Environment**
 
 	**TL;DR**
-	You can either follow the four (4) steps below, which is quite a lengthy process, to create your own web services **OR** you can open a SoapUI XML Workspace, already created with the web services, included in this repository, i.e. ```` e-mpiya-foundation\MoMo WSDL\MoMo-Services-workspace.xml ````.
+	You can either follow the four (4) steps below, which is quite a lengthy process, to create your own web services **OR** you can open a SoapUI XML Workspace, already created with the web services, included in this repository, i.e. `e-mpiya-foundation\MoMo WSDL\MoMo-Services-workspace.xml`.
 	Simply launch SoapUI, click *File*, then click *Switch Workspace* and locate and open *MoMo-Services-workspace.xml*
 
 	![Switch SoapUI Workspace](readme_assets/switch-workspace.jpg)
@@ -97,7 +97,7 @@ So, for now;
 		
 	3.	**Import WSDL into SOAPUI:**
 	
-		Launch SoapUI, click create new SOAP project and then locate the relevant WSDL file to import. In our case, we started with *RequestPayment.wsdl* located in ``` e-mpiya-foundation\MoMo WSDL\MobileMoney-SOAP\1.7 ```, here: [RequestPayment.wsdl](MoMo%20WSDL/MobileMoney-SOAP/1.7/RequestPayment.wsdl)
+		Launch SoapUI, click create new SOAP project and then locate the relevant WSDL file to import. In our case, we started with *RequestPayment.wsdl* located in `e-mpiya-foundation\MoMo WSDL\MobileMoney-SOAP\1.7`, here: [RequestPayment.wsdl](MoMo%20WSDL/MobileMoney-SOAP/1.7/RequestPayment.wsdl)
 		
 		![Import RequestPayment WSDL](readme_assets/import-request-payment-wsdl.jpg)
 		
@@ -113,17 +113,18 @@ So, for now;
 
 3.	**Test Client and Web Services:**
 
-At this stage, you can open DepositMobileMoney, RequestPayment, etc projects by clicking the *+* icon, double click the Mockservice, e.g. DepositMobileMoneyResponse or RequestPaymentResponse and click the green play icon to start the Mockservice. This time, when you send a request to the server by clicking *Deposit* or *Pay Now* buttons, you should get a response. The response has been formatted in plain text and JSON, which can be manipulated in various ways.
+    At this stage, you can open DepositMobileMoney, RequestPayment, etc projects by clicking the *+* icon, double click the Mockservice, e.g. DepositMobileMoneyResponse or RequestPaymentResponse and click the green play icon to start the Mockservice. This time, when you send a request to the server by clicking *Deposit* or *Pay Now* buttons, you should get a response. The response has been formatted in plain text and JSON, which can be manipulated in various ways.
 
-![Response From Server through SoapUI Mockservice](readme_assets/mockservice-server-response.jpg)
+    ![Response From Server through SoapUI Mockservice](readme_assets/mockservice-server-response.jpg)
 
 4. **Customisation**
 
-Feel free to modify or use any ideas from this project to meet your own requirements. If you are not really familiar with the Laravel project structure. These are the critical sections you need to work on in order to customise the project:
-    *   Controllers: This is where all the magic happens, in here you will find all the code that adds functionality and interacts with database models: ``` e-mpiya-foundation/app/Http/Controllers/ ```
-    *   Views: This is the where all the cosmetic work and frontend stuff happens: ``` e-mpiya-foundation/resources/views/ ```
-    *   Public: This is where you will find all the assets such as CSS, JS, images, etc: ``` e-mpiya-foundation/public/ ```
-    *   Routes: This is where you can specify you web and api urls: ``` e-mpiya-foundation/routes/ ```
+    Feel free to modify or use any ideas from this project to meet your own requirements. If you are not really familiar with the Laravel project structure. These are the critical sections you need to work on in order to customise the project:
+    
+    * Controllers: This is where all the magic happens, in here you will find all the code that adds functionality and interacts with database models: `e-mpiya-foundation/app/Http/Controllers`.
+    * Views: This is the where all the cosmetic work and frontend stuff happens:` e-mpiya-foundation/resources/views`.
+    * Public: This is where you will find all the assets such as CSS, JS, images, etc: ` e-mpiya-foundation/public`.
+    * Routes: This is where you can specify you web and api urls: ` e-mpiya-foundation/routes`.
 
 *Happy Coding*
 
