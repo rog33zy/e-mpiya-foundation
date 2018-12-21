@@ -44,7 +44,7 @@ So, for now;
     * JSON PHP Extension
     * BCMath PHP Extension
 
-    Clone and cd into this project folder OR download this project, then extract `e-mpiya-foundation` project folder into your server root and then visit `http://localhost/e-mpiya-foundation` using your browser.
+    Clone and cd into this project folder OR download this project, then extract `e-mpiya-foundation` project folder into your server root, rename `e-mpiya-foundation\.env.example` to `e-mpiya-foundation\.env` and then visit `http://localhost/e-mpiya-foundation` using your browser.
 	
 	2. **Creating MySQL or MariaDB App Database**
 		
