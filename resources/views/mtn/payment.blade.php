@@ -28,7 +28,7 @@
 										<span class="prefix"><strong>From MTN Money Number*</strong></span>
 									</div>
 									<div class="medium-9 column">
-										<input type="text" name="mtn_money_number" placeholder="MTN Money Number" value="{{ $user->mobile_number }}" />
+										<input type="text" name="mtn_money_number" placeholder="MTN Money Number" value="{{ $user_mobile->mobile_number }}" />
 									</div>
 								</div>
 								@if (count($errors) > 0)

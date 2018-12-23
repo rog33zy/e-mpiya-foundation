@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserMobile;
 use App\MTNRequest;
 use App\User;
 use Illuminate\Http\Request;
@@ -17,7 +18,9 @@ class MTNRequestController extends Controller
     public function mTNDeposit()
     {
 		// User
-		$data['user'] = auth()->user();
+		$data['user'] = $user = auth()->user();
+		// Use mobile
+		$data['user_mobile'] = UserMobile::whereUserId($user->id)->first();
 		
         return view('mtn.deposit', $data);
     }
@@ -30,7 +33,9 @@ class MTNRequestController extends Controller
     public function mTNPayment()
     {
 		// User
-		$data['user'] = auth()->user();
+		$data['user'] = $user = auth()->user();
+		// Use mobile
+		$data['user_mobile'] = UserMobile::whereUserId($user->id)->first();
 		
         return view('mtn.payment', $data);
     }

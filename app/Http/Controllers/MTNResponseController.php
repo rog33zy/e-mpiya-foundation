@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserMobile;
 use App\MTNResponse;
 use Illuminate\Http\Request;
 

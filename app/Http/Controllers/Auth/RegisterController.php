@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/user/assigndefaults';
 
     /**
      * Create a new controller instance.
@@ -48,16 +48,11 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-		$other = array('required_if:mobile_network,Other','regex:/^(((?!095)\d{10})|((?!096)\d{10})|((?!097)\d{10}))$/');
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-			'mobile_network' => 'required|required_with:Number',
-			'Airtel' => 'required_if:mobile_network,Airtel|regex:(^097\d{7}$)',
-			'MTN' => 'required_if:mobile_network,MTN|regex:(^096\d{7}$)',
-			'Zamtel' => 'required_if:mobile_network,Zamtel|regex:(^095\d{7}$)',
-			'Other' => $other,
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'username' => 'required|string|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users',
+			'user_type_id' => 'required',
+            'password' => 'required|string|confirmed|min:6',
         ]);
     }
 
@@ -69,42 +64,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-		// Set user mobile network
-		if ($data['mobile_network'] == "Airtel") {
-			$mobile_service_provider_id = 1;
-		} elseif ($data['mobile_network'] == "MTN") {
-			$mobile_service_provider_id = 2;
-		} elseif ($data['mobile_network'] == "Zamtel") {
-			$mobile_service_provider_id = 3;
-		} elseif ($data['mobile_network'] == "Other") {
-			$mobile_service_provider_id = 4;
-		}
-		// Set user mobile number
-		if (isset($data['Airtel'])) {
-			if (!is_null($data['Airtel'])) {
-				$user_mobile_number = $data['Airtel'];
-			}
-		}
-		if (isset($data['MTN'])) {
-			if (!is_null($data['MTN'])) {
-				$user_mobile_number = $data['MTN'];
-			}
-		}
-		if (isset($data['Zamtel'])) {
-			if (!is_null($data['Zamtel'])) {
-				$user_mobile_number = $data['Zamtel'];
-			}
-		}
-		if (isset($data['Other'])) {
-			if (!is_null($data['Other'])) {
-				$user_mobile_number = $data['Other'];
-			}
-		}
         return User::create([
-            'name' => $data['name'],
+            'user_type_id' => $data['user_type_id'],
+            'username' => $data['username'],
+            'username_slug' => str_slug($data['username'], ''),
+			'user_profile_picture' => "",
             'email' => $data['email'],
-            'mobile_service_provider_id' => $mobile_service_provider_id,
-            'mobile_number' => $user_mobile_number,
             'password' => Hash::make($data['password']),
         ]);
     }
