@@ -151,7 +151,7 @@ class UserController extends Controller
 		$data['contents'] = $contents->paginate(10);
 		$data['heading'] = $user->username . " User Profile";
 		
-        return view('layouts.app', $data)->nest('profile_card', 'user.profile_card', $data);
+        return view('layouts.app', $data)->nest('profile_card', 'user.profile_card', $data)->nest('home', 'home', $data);
     }
 	// View user associate list
 	public function associatesList(User $user) {
