@@ -80,10 +80,11 @@ class MTNRequestController extends Controller
 		}
 		// logged in user
 		$user = auth()->user();
+		$data['user'] = $user;
 		
 		// client properties
 		// Request Payment Deposit URL
-		$REQDEPOSITURL = "http://localhost:8088/DepositMobileMoneyResponse";
+		$REQDEPOSITURL = route('post_mtn_deposit_response');
 
 		// Mobile Money ECW Version(1.5/1.7)
 		$ECW_VERSION = 1.7;
@@ -207,9 +208,9 @@ class MTNRequestController extends Controller
 	</soapenv:Body>
 </soapenv:Envelope>
 XML;
-		try {
 			$full_response = doXMLCurl($REQDEPOSITURL, $REQUEST_BODY);
 			$response_xml = new \SimpleXMLElement(strstr($full_response, '<'), LIBXML_NOERROR);
+		try {
 		} catch (\Exception $e) {
 			return redirect()->back()->withInput()->with('server_error', 'Server Unreachable. Please try again.');
 		}
@@ -273,10 +274,11 @@ XML;
 		}
 		// logged in user
 		$user = auth()->user();
+		$data['user'] = $user;
 		
 		// client properties
 		// RequestPayment URL
-		$REQPAYEMENTURL = "http://localhost:8088/RequestPaymentResponse";
+		$REQPAYEMENTURL = route('post_mtn_payment_response');
 
 		// Mobile Money ECW Version(1.5/1.7)
 		$ECW_VERSION = 1.7;

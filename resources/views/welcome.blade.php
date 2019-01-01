@@ -79,7 +79,6 @@
                 padding-top: 20px;
             }
 
-
             .m-b-md {
                 margin-bottom: 30px;
             }
@@ -103,7 +102,7 @@
 
                 <div class="title m-b-md">
                     e-Mpiya OMPS
-                    <p class="versioninfo">Online and Mobile Payment System<br>Foundation</p>
+                    <p class="versioninfo">Online and Mobile Payment System<br>Foundation Demo</p>
                 </div>
 
             </div>

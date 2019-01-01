@@ -17,7 +17,7 @@
 					</div>
 					@if (count($errors) > 0)
 						@foreach ($errors->get('username') as $error)
-							<span class="error">{{ $error }}</span>
+							<span class="label alert">{{ $error }}</span>
 						@endforeach
 					@endif
 					<span class="required">(Required) Your Username</span>
@@ -29,7 +29,7 @@
 						<!-- Company <input type="radio" name="user_type" value="1" <?php if ($user->user_type_id == 1) echo 'checked' ?> />
 						Group <input type="radio" name="user_type" value="2" <?php if ($user->user_type_id == 2) echo 'checked' ?> />
 						Individual <input type="radio" name="user_type" value="3" <?php if ($user->user_type_id == 3) echo 'checked' ?> />
-						<div class="large-12 medium-12 small-12 columns"><span class="optional">(Required) Your user type</span></div> -->
+						<div class="large-12 medium-12 small-12 columns"><span class="label success">(Required) Your user type</span></div> -->
 						<p>
 							@if ($user->user_type_id == 1)
 								Company
@@ -54,7 +54,7 @@
 								</div>
 								@if (count($errors) > 0)
 									@foreach ($errors->get('company_name') as $error)
-										<span class="error">{{ $error }}</span>
+										<span class="label alert">{{ $error }}</span>
 									@endforeach
 								@endif
 								<span class="required">(Required) Your Company Name</span>
@@ -69,7 +69,7 @@
 										<input id="company_specialisation" type="text" name="company_specialisation" placeholder="Company Specialisation" value="{{ $user_type->company_user_specific }}" />
 									</div>
 								</div>
-								<span class="optional">(Optional) Your specialisation. Add your own if not listed.</span>
+								<span class="label success">(Optional) Your specialisation. Add your own if not listed.</span>
 							</div>
 							<!-- Established -->
 							<div class="large-12 medium-12 small-12 columns">
@@ -87,25 +87,25 @@
 								</div>
 								@if (count($errors) > 0)
 									@foreach ($errors->get('day_established') as $error)
-										<span class="error">{{ $error }}</span>
+										<span class="label alert">{{ $error }}</span>
 									@endforeach
 								@endif
 								@if (count($errors) > 0)
 									@foreach ($errors->get('month_established') as $error)
-										<span class="error">{{ $error }}</span>
+										<span class="label alert">{{ $error }}</span>
 									@endforeach
 								@endif
 								@if (count($errors) > 0)
 									@foreach ($errors->get('year_established') as $error)
-										<span class="error">{{ $error }}</span>
+										<span class="label alert">{{ $error }}</span>
 									@endforeach
 								@endif
 								@if (count($errors) > 0)
 									@foreach ($errors->get('date_established') as $error)
-										<span class="error">{{ $error }}</span>
+										<span class="label alert">{{ $error }}</span>
 									@endforeach
 								@endif
-								<span class="optional">(Optional) Date Established</span>
+								<span class="label success">(Optional) Date Established</span>
 							</div>
 						</div>
 						@elseif ($user->user_type_id == 2)
@@ -121,7 +121,7 @@
 										<input id="group_type" type="text" name="group_type" placeholder="Group Type" value="{{ $user_type->group_user_specific }}" />
 									</div>
 								</div>
-								<span class="optional">(Optional) Your Group Type e.g: Band, Colaboration, Joint Venture, etc. Add your own if not listed.</span>
+								<span class="label success">(Optional) Your Group Type e.g: Band, Colaboration, Joint Venture, etc. Add your own if not listed.</span>
 							</div>
 							<!-- Date formed -->
 							<div class="large-12 medium-12 small-12 columns">
@@ -139,25 +139,25 @@
 								</div>
 								@if (count($errors) > 0)
 									@foreach ($errors->get('day_formed') as $error)
-										<span class="error">{{ $error }}</span>
+										<span class="label alert">{{ $error }}</span>
 									@endforeach
 								@endif
 								@if (count($errors) > 0)
 									@foreach ($errors->get('month_formed') as $error)
-										<span class="error">{{ $error }}</span>
+										<span class="label alert">{{ $error }}</span>
 									@endforeach
 								@endif
 								@if (count($errors) > 0)
 									@foreach ($errors->get('year_formed') as $error)
-										<span class="error">{{ $error }}</span>
+										<span class="label alert">{{ $error }}</span>
 									@endforeach
 								@endif
 								@if (count($errors) > 0)
 									@foreach ($errors->get('date_formed') as $error)
-										<span class="error">{{ $error }}</span>
+										<span class="label alert">{{ $error }}</span>
 									@endforeach
 								@endif
-								<span class="optional">(Optional) Date Group was Formed, Founded or Established</span>
+								<span class="label success">(Optional) Date Group was Formed, Founded or Established</span>
 							</div>
 							<!-- Group Members -->
 							<div class="large-12 medium-12 small-12 columns">
@@ -169,7 +169,7 @@
 										<input id="group_members" type="text" name="group_members" placeholder="Group Members" value="{{ $user_type->group_members }}" />
 									</div>
 								</div>
-								<span class="optional">(Optional) Group Members. Type in comma seperated names or select from "Associate" hints.</span>
+								<span class="label success">(Optional) Group Members. Type in comma seperated names or select from "Associate" hints.</span>
 							</div>
 						</div>
 						@elseif ($user->user_type_id == 3)
@@ -187,7 +187,7 @@
 										<input id="occupation" type="text" name="occupation" placeholder="Occupation" value="{{ $user_type->individual_user_specific }}" />
 									</div>
 								</div>
-								<span class="optional">(Optional) Your Occupation e.g. Artist, Consultant, Student, etc. Add your own if not listed.</span>
+								<span class="label success">(Optional) Your Occupation e.g. Artist, Consultant, Student, etc. Add your own if not listed.</span>
 							</div>
 							<!-- DOB -->
 							<div class="large-12 medium-12 small-12 columns">
@@ -205,25 +205,25 @@
 								</div>
 								@if (count($errors) > 0)
 									@foreach ($errors->get('day_of_birth') as $error)
-										<span class="error">{{ $error }}</span>
+										<span class="label alert">{{ $error }}</span>
 									@endforeach
 								@endif
 								@if (count($errors) > 0)
 									@foreach ($errors->get('month_of_birth') as $error)
-										<span class="error">{{ $error }}</span>
+										<span class="label alert">{{ $error }}</span>
 									@endforeach
 								@endif
 								@if (count($errors) > 0)
 									@foreach ($errors->get('year_of_birth') as $error)
-										<span class="error">{{ $error }}</span>
+										<span class="label alert">{{ $error }}</span>
 									@endforeach
 								@endif
 								@if (count($errors) > 0)
 									@foreach ($errors->get('date_of_birth') as $error)
-										<span class="error">{{ $error }}</span>
+										<span class="label alert">{{ $error }}</span>
 									@endforeach
 								@endif
-								<span class="optional">(Optional) Your Date of Birth</span>
+								<span class="label success">(Optional) Your Date of Birth</span>
 							</div>
 						</div>
 						</div>
@@ -231,7 +231,7 @@
 					</div>
 					@if (count($errors) > 0)
 						@foreach ($errors->get('user_type') as $error)
-							<span class="error">{{ $error }}</span>
+							<span class="label alert">{{ $error }}</span>
 						@endforeach
 					@endif
 				</div>
@@ -247,11 +247,11 @@
 								<input type="text" name="profile_picture_link"  placeholder="Profile Picture link (http://*.* or www.*.*)" value="{{ $user->user_profile_picture }}" />
 							</div>
 						</div>
-						<span class="optional">(Option 1) A web link to the image you wish to set as a profile picture</span>
+						<span class="label success">(Option 1) A web link to the image you wish to set as a profile picture</span>
 						<center><h5>OR</h5></center>
 						<div class="medium-12 column">
 							<input type="file" name="profile_picture_upload"  accept="image/*" />
-							<span class="optional">(Option 2) Upload an image</span>
+							<span class="label success">(Option 2) Upload an image</span>
 						</div>
 						<img src="<?php
 						if (!(Auth::user()->user_profile_picture == "")) {
@@ -281,12 +281,12 @@
 					</div>
 					@if (count($errors) > 0)
 						@foreach ($errors->get('password') as $error)
-							<span class="error">{{ $error }}</span>
+							<span class="label alert">{{ $error }}</span>
 						@endforeach
 					@endif
 					@if (count($errors) > 0)
 						@foreach ($errors->get('password_confirm') as $error)
-							<span class="error">{{ $error }}</span>
+							<span class="label alert">{{ $error }}</span>
 						@endforeach
 					@endif
 					<span class="required">(Required) Your password, minimum length of 6 characters</span>
@@ -302,10 +302,10 @@
 					</div>
 					@if (count($errors) > 0)
 						@foreach ($errors->get('mobile_network') as $error)
-							<span class="error">{{ $error }}</span>
+							<span class="label alert">{{ $error }}</span>
 						@endforeach
 					@endif
-					<span class="optional">(Optional) Your Mobile Network Provider</span>
+					<span class="label success">(Optional) Your Mobile Network Provider</span>
 				</div>
 				<!-- Mobile Number -->
 				<div class="large-12 medium-12 small-12 columns">
@@ -330,30 +330,30 @@
 					</div>
 					@if (count($errors) > 0)
 						@foreach ($errors->get('Airtel') as $error)
-							<span class="error">{{ $error }}</span>
+							<span class="label alert">{{ $error }}</span>
 						@endforeach
 					@endif
 					@if (count($errors) > 0)
 						@foreach ($errors->get('MTN') as $error)
-							<span class="error">{{ $error }}</span>
+							<span class="label alert">{{ $error }}</span>
 						@endforeach
 					@endif
 					@if (count($errors) > 0)
 						@foreach ($errors->get('Zamtel') as $error)
-							<span class="error">{{ $error }}</span>
+							<span class="label alert">{{ $error }}</span>
 						@endforeach
 					@endif
 					@if (count($errors) > 0)
 						@foreach ($errors->get('Other') as $error)
-							<span class="error">{{ $error }}</span>
+							<span class="label alert">{{ $error }}</span>
 						@endforeach
 					@endif
 					@if (count($errors) > 0)
 						@foreach ($errors->get('MobileNetwork') as $error)
-							<span class="error">{{ $error }}</span>
+							<span class="label alert">{{ $error }}</span>
 						@endforeach
 					@endif
-					<span class="optional">(Optional) Your Mobile Number, e.g. 095xxxxxxx or 096xxxxxxx or 097xxxxxxx</span>
+					<span class="label success">(Optional) Your Mobile Number, e.g. 095xxxxxxx or 096xxxxxxx or 097xxxxxxx</span>
 				</div>
 				<!-- eMail Address -->
 				<div class="large-12 medium-12 small-12 columns">
@@ -367,7 +367,7 @@
 					</div>
 					@if (count($errors) > 0)
 						@foreach ($errors->get('email') as $error)
-							<span class="error">{{ $error }}</span>
+							<span class="label alert">{{ $error }}</span>
 						@endforeach
 					@endif
 					<span class="required">(Required) Your eMail Address</span>
@@ -382,7 +382,7 @@
 							<input type="text" name="website" placeholder="Website" value="{{ $user->website }}" />
 						</div>
 					</div>
-					<span class="optional">(Optional) Your website</span>
+					<span class="label success">(Optional) Your website</span>
 				</div>
 				<!-- Location -->
 				<div class="large-12 medium-12 small-12 columns">

@@ -89,7 +89,7 @@ class UserController extends Controller
 				if (!is_null($user->email)) {
 					Mail::send('emails.welcome', ['user' => $user], function ($message) use ($user) {
 						$message->from('info@oneziko.com', 'One Ziko Info');
-						$message->to($user->email, $user->username)->subject('Welcome to Zambian Startups');
+						$message->to($user->email, $user->username)->subject('Welcome to One Ziko Developers [e-Mpiya Foundation]');
 					});
 				}
 			} catch (\Exception $e) {
@@ -107,7 +107,7 @@ class UserController extends Controller
 				if (!is_null($user->email)) {
 					Mail::send('emails.welcome', ['user' => $user], function ($message) use ($user) {
 						$message->from('info@oneziko.com', 'One Ziko Info');
-						$message->to($user->email, $user->username)->subject('Welcome to Zambian Startups');
+						$message->to($user->email, $user->username)->subject('Welcome to One Ziko Developers [e-Mpiya Foundation]');
 					});
 				}
 			} catch (\Exception $e) {
