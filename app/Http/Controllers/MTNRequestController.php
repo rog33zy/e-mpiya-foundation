@@ -61,7 +61,7 @@ class MTNRequestController extends Controller
 				"Pragma: no-cache",
 				"SOAPAction: \"run\"",
 				"Content-length: ".strlen($postXML),
-				"Host:127.0.0.1",
+				"Host:" . $_SERVER['SERVER_NAME'],
 				"Cookie: sessionid=" . Session::getId(),
 			); 
 			$CURL = curl_init();
@@ -255,7 +255,7 @@ XML;
 				"Pragma: no-cache",
 				"SOAPAction: \"run\"",
 				"Content-length: ".strlen($postXML),
-				"Host:127.0.0.1",
+				"Host:" . $_SERVER['SERVER_NAME'],
 				"Cookie: sessionid=" . Session::getId(),
 			); 
 			$CURL = curl_init();
