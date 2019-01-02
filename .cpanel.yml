@@ -5,7 +5,6 @@ deployment:
         - /bin/cp -r * $DEPLOYPATH                        #copy all recursively to $DEPLOYPATH
         - /bin/cp -r * $DEPLOYPATH/app
         - /bin/cp -r * $DEPLOYPATH/Http/Controllers
-        - /bin/cp -r * $DEPLOYPATH/config
         - /bin/cp -r * $DEPLOYPATH/public
         - /bin/cp -r * $DEPLOYPATH/resources
         - /bin/cp -r * $DEPLOYPATH/resources/views
