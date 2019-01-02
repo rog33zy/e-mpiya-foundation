@@ -42,13 +42,13 @@ class UserController extends Controller
 	public function userAssignDefaults()
 	{
 		$user = auth()->user();
-		$user_app_access = UserAccess::whereUserId($user->id)->whereUserRoleId(5)->first();
+		$user_app_access = UserAccess::whereUserId($user->id)->whereUserRoleId(9)->first();
 		if ($user->is_active != 1) {
 			// Assign user access permission
 			if (is_null($user_app_access)) {
 				$user_access = new UserAccess;
 				$user_access->user_id = $user->id;
-				$user_access->user_role_id = 5;
+				$user_access->user_role_id = 9;
 				$user_access->save();
 			}
 			// Activate user
@@ -100,7 +100,7 @@ class UserController extends Controller
 			// Assign user access permission
 			$user_access = new UserAccess;
 			$user_access->user_id = $user->id;
-			$user_access->user_role_id = 5;
+			$user_access->user_role_id = 9;
 			$user_access->save();
 			// Send welcome email
 			try {
@@ -112,15 +112,15 @@ class UserController extends Controller
 				}
 			} catch (\Exception $e) {
 				// Unable to send welcome email TODO
-				return redirect(route('edit-user-profile', $user->username_slug));
+				return redirect(route('home'));
 			}
 			
-			return redirect(route('view-user-profile', $user->username_slug));
+			return redirect(route('home'));
 		} else {
-			return redirect(route('view-user-profile', $user->username_slug));
+			return redirect(route('home'));
 		}
 		
-		return redirect(route('view-user-profile', $user->username_slug));
+		return redirect(route('home'));
 	}
 	// View user profile
 	public function viewUserProfile(User $user)
