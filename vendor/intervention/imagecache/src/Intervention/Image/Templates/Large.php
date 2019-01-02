@@ -9,6 +9,6 @@ class Large implements FilterInterface
 {
     public function applyFilter(Image $image)
     {
-        return $image->widen(480);
+        return $image->fit(480, 360);
     }
 }

@@ -9,6 +9,6 @@ class Small implements FilterInterface
 {
     public function applyFilter(Image $image)
     {
-        return $image->widen(120);
+        return $image->fit(120, 90);
     }
 }
