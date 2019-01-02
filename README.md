@@ -1,6 +1,8 @@
 # e-Mpiya Foundation
 e-Mpiya Online and Mobile Payment System (OMPS) is a [One Ziko](https://oneziko.com/) payment service that leverages on existing payment options to bridge financial inclusion in Zambia. This repository is the foundation on which this payment system based. Feel free to contribute, use and improve upon it.
 
+Before we proceed, if you would like to try out a running demo of this repository, you can access it here: https://e-mpiya-foundation.oneziko.com/
+
 ## Table Of Contents (TOC)
 1.	Running Web Client
 	1.	Running Web Client
@@ -15,6 +17,8 @@ e-Mpiya Online and Mobile Payment System (OMPS) is a [One Ziko](https://oneziko.
 3.	Test Client and Web Services
 
 4. Customisation
+
+5. About The Demo
 	
 ## Some Things To Note
 With the TOC outlined above, we can start by aligning with expectations. Ideally, it would be good to integrate with all three (3) mobile network operators (MNOs) in Zambia, i.e. Airtel, MTN and ZAMTEL, and also other mobile financial services such as Zoona, Kazang, SpeedPay, etc. But as it stands, we are restricted by non-availability of public Application Programming Interfaces (API's) for developers to work with from the mentioned services. Hopefully, by the time you are reading this, that would have changed.
@@ -125,6 +129,232 @@ So, for now;
     * Views: This is the where all the cosmetic work and frontend stuff happens:` e-mpiya-foundation/resources/views`.
     * Public: This is where you will find all the assets such as CSS, JS, images, etc: ` e-mpiya-foundation/public`.
     * Routes: This is where you can specify you web and api urls: ` e-mpiya-foundation/routes`.
+
+5. **About The Demo**
+
+	A demo of this repository can be accessed online, here: https://e-mpiya-foundation.oneziko.com/
+
+	Currently the demo has two URL endpoints which act as server mockservice responses. You can use any external site or tool to send a valid SOAP POST request and a valid SOAP request will be returned.
+
+	* Bill Payment API initiated by Partner
+
+		URL Endpoint: `https://e-mpiya-foundation.oneziko.com/mtn/payment/response`
+
+		If you send a Request for RequestPayment in this format, to the URL endpoint:
+
+		```XML
+			<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:b2b="http://b2b.mobilemoney.mtn.zm_v1.0">
+				<soapenv:Header>
+				<RequestSOAPHeader xmlns="http://www.huawei.com.cn/schema/common/v2_1">
+					<spId>35000001</spId>
+					<spPassword>de96d901b3bad1db2aab76b7b0b202f2</spPassword>
+					<bundleID>256000039</bundleID>
+					<serviceId>35000001000035</serviceId>
+					<timeStamp>20100727</timeStamp>
+				</RequestSOAPHeader>
+				</soapenv:Header>
+				<soapenv:Body>
+					<b2b:processRequest>
+						<serviceId>200</serviceId>
+						<parameter>
+							<name>DueAmount</name> <value>10</value>
+						</parameter>
+						<parameter> <name>MSISDNNum</name>
+							<value>13132132000</value>
+						</parameter>
+						<parameter>
+							<name>ProcessingNumber</name>
+							<value>555</value>
+						</parameter>
+						<parameter> <name>serviceId</name>
+							<value>101</value>
+						</parameter>
+						<parameter> <name>AcctRef</name>
+							<value>112233</value>
+						</parameter>
+						<parameter>
+							<name>AcctBalance</name>
+							<value>555</value>
+						</parameter>
+						<parameter>
+							<name>MinDueAmount</name>
+							<value>121212</value>
+						</parameter>
+						<parameter>
+							<name>Narration</name>
+							<value>121212</value>
+						</parameter>
+						<parameter>
+							<name>PrefLang</name>
+							<value>121212121</value>
+						</parameter>
+						<parameter>
+							<name>OpCoID</name>
+							<value>0</value>
+						</parameter>
+						<parameter>
+							<name>CurrCode</name>
+							<value>USD</value>
+						</parameter>
+					</b2b:processRequest>
+				</soapenv:Body>
+			</soapenv:Envelope>
+		```
+
+		You will get a Response for RequestPayment, similar to the one below, provided all the parameters are correct:
+
+		```XML
+			<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+				<soapenv:Body>
+					<ns1:processRequestResponse xmlns:ns1="http://b2b.mobilemoney.mtn.zm_v1.0">
+						<return>
+							<name>ProcessingNumber</name>
+							<value>${spId}</value>
+						</return>
+						<return>
+							<name>ThirdPartyAcctRef</name>
+							<value>444</value>
+						</return>
+						<return>
+							<name>senderID</name>
+							<value>MOM</value>
+						</return>
+						<return>
+							<name>StatusCode</name>
+							<value>222</value>
+						</return>
+						<return>
+							<name>StatusDesc</name>
+							<value>PENDING</value>
+						</return>
+						<return>
+							<name>MOMTransactionID</name>
+							<value>111</value>
+						</return>
+					</ns1:processRequestResponse>
+				</soapenv:Body>
+			</soapenv:Envelope>
+		```
+
+	* Deposit APIs
+
+		URL Endpoint: `https://e-mpiya-foundation.oneziko.com/mtn/deposit/response`
+
+		If you send a Request for DepositMobileMoney in this format, to the URL endpoint:
+
+		```XML
+			<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:b2b="http://b2b.mobilemoney.mtn.zm_v1.0/">
+				<soapenv:Header>
+					<RequestSOAPHeader xmlns="http://www.huawei.com.cn/schema/common/v2_1">
+						<spId>35000001</spId>
+						<spPassword>de96d901b3bad1db2aab76b7b0b202f2</spPassword>
+						<bundleID>256000039</bundleID>
+						<serviceId>35000001000035</serviceId>
+						<timeStamp>20100727</timeStamp>
+					</RequestSOAPHeader>
+				</soapenv:Header>
+				<soapenv:Body>
+					<b2b:processRequest>
+						<serviceId>201</serviceId>
+						<parameter>
+							<name>ProcessingNumber</name>
+							<value>555</value>
+						</parameter>
+						<parameter>
+							<name>serviceId</name>
+							<value>102</value>
+						</parameter>
+						<parameter>
+							<name>SenderID</name>
+							<value>MOM</value>
+						</parameter>
+						<parameter>
+							<name>PrefLang</name>
+							<value>121212121</value>
+						</parameter>
+						<parameter>
+							<name>OpCoID</name>
+							<value>0</value>
+						</parameter>
+						<parameter>
+							<name>MSISDNNum</name>
+							<value> FRI:46733491234/MSISDN </value>
+						</parameter>
+						<parameter>
+							<name>Amount</name>
+							<value>10</value>
+						</parameter>
+						<parameter>
+							<name>Narration</name>
+							<value> FRI:1212 @water.company/SP </value>
+						</parameter>
+						<parameter>
+							<name>IMSINum</name>
+							<value>86</value>
+						</parameter>
+						<parameter>
+							<name>OrderDateTime</name>
+							<value>20100727</value>
+						</parameter>
+						<parameter>
+							<name>CurrCode</name>
+							<value>USD</value>
+						</parameter>
+					</b2b:processRequest>
+				</soapenv:Body>
+			</soapenv:Envelope>
+		```
+
+		You will get a Response for DepositMobileMoney, similar to the one below, provided all the parameters are correct:
+
+		```XML
+			<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+				<soapenv:Body>
+					<ns1:processRequestResponse xmlns:ns1="http://b2b.mobilemoney.mtn.zm_v1.0/">
+						<return>
+							<name>ProcessingNumber</name>
+							<value>123</value>
+						</return>
+						<return>
+							<name>SenderID</name>
+							<value>MOM</value>
+						</return>
+						<return>
+							<name>StatusCode</name>
+							<value>234</value>
+						</return>
+						<return>
+							<name>StatusDesc</name>
+							<value>FAILED</value>
+						</return>
+						<return>
+							<name>OpCoID</name>
+							<value>0</value>
+						</return>
+						<return>
+							<name>IMSINum</name>
+							<value>86</value>
+						</return>
+						<return>
+							<name>MSISDNNum</name>
+							<value>13132132000</value>
+						</return>
+						<return>
+							<name>OrderDateTime</name>
+							<value>20100727</value>
+						</return>
+						<return>
+							<name>ThirdPartyAcctRef</name>
+							<value>121212</value>
+						</return>
+						<return>
+							<name>MOMTransactionID</name>
+							<value>456</value>
+						</return>
+					</ns1:processRequestResponse>
+				</soapenv:Body>
+			</soapenv:Envelope>
+		```
 
 *Happy Coding*
 
