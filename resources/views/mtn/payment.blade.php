@@ -38,6 +38,11 @@
 								@endif
 								<div class="large-12 medium-12 small-12 column"><span class="label success">(Required) MTN Money Mobile Number To Pay From, e.g: 096x xxx xxx</span></div>
 							</div>
+							@if (isset($user_mobile))
+								@if ($user_mobile->mobile_service_provider_id != 2)
+									<p class="label warning">Enter an MTN number or add an MTN Mobile Money number to your profile: <a href="{{ route('edit-user-profile', Auth::user()->username_slug) }}" title="Add MTN Number">Add MTN Number</a> </p>
+								@endif
+							@endif
 							<!-- Amount To Pay From MTN Money Account -->
 							<div class="large-12 medium-12 small-12 columns">
 								<div class="row collapse prefix-radius">

@@ -40,7 +40,7 @@
 							</div>
 							@if (isset($user_mobile))
 								@if ($user_mobile->mobile_service_provider_id != 2)
-									<p>Please add your MTN Mobile Money number to your profile: <a href="{{ route('edit-user-profile', Auth::user()->username_slug) }}" title="Add MTN Number">Add MTN Number</a> </p>
+									<p class="label warning">Enter an MTN number or add an MTN Mobile Money number to your profile: <a href="{{ route('edit-user-profile', Auth::user()->username_slug) }}" title="Add MTN Number">Add MTN Number</a> </p>
 								@endif
 							@endif
 							<!-- Amount To Deposit From MTN Money -->
