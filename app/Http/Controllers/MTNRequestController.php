@@ -84,7 +84,7 @@ class MTNRequestController extends Controller
 		
 		// client properties
 		// Request Payment Deposit URL
-		$REQDEPOSITURL = route('post_mtn_deposit_response');
+		$REQDEPOSITURL = route('post_mtn_deposit_response').'?format=json';
 
 		// Mobile Money ECW Version(1.5/1.7)
 		$ECW_VERSION = 1.7;

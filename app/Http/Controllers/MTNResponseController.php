@@ -20,8 +20,11 @@ class MTNResponseController extends Controller
 	/**
 	*	Respond as SDP with deposit information
 	**/
-	public function mTNDepositResponse()
+	public function mTNDepositResponse(Request $request)
 	{
+		$format = $request->input('format');
+		if ($format == "soap")
+		{
 		// get incoming SOAP request contents
 		try {
 			$full_request = file_get_contents("php://input");
@@ -146,6 +149,39 @@ XML;
 XML;
 	
 		return $RESPONSE_BODY;
+		} elseif ($format == "json")
+		{
+		$ERROR_RESPONSE= <<<XML
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:b2b="http://b2b.mobilemoney.mtn.zm_v1.0/">
+	<soapenv:Header/>
+	<soapenv:Body>
+		<b2b:processRequestResponse>
+			<return>
+				<name>Error</name>
+				<value>No JSON data found</value>
+			</return>
+		</b2b:processRequestResponse>
+	</soapenv:Body>
+</soapenv:Envelope>
+XML;
+			return $ERROR_RESPONSE;
+		} else
+		{
+		$ERROR_RESPONSE= <<<XML
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:b2b="http://b2b.mobilemoney.mtn.zm_v1.0/">
+	<soapenv:Header/>
+	<soapenv:Body>
+		<b2b:processRequestResponse>
+			<return>
+				<name>Error</name>
+				<value>Please use correct format parameter in URL.</value>
+			</return>
+		</b2b:processRequestResponse>
+	</soapenv:Body>
+</soapenv:Envelope>
+XML;
+			return $ERROR_RESPONSE;
+		}
 	}
 	/**
 	*	Respond as SDP with deposit information
