@@ -1,4 +1,6 @@
-# e-Mpiya Foundation
+# e-Mpiya Foundation [Outdated]
+*Disclaimer: The MTN Developers Portal on which this repository is based on is now outdated, visit [New MTN Developer Portal](https://developers.mtn.com/) for latest specifications.*
+
 e-Mpiya Online and Mobile Payment System (OMPS) is a [One Ziko](https://oneziko.com/) payment service that leverages on existing payment options to bridge financial inclusion in Zambia. This repository is the foundation on which this payment system based. Feel free to contribute, use and improve upon it.
 
 Before we proceed, if you would like to try out a running demo of this repository, you can access it here: https://e-mpiya-foundation.oneziko.com/
