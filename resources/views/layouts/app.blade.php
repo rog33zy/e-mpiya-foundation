@@ -12,9 +12,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    @if(Route::currentRouteName() == 'mtn_collection_widget')
     <!-- Scripts -->
     <script src="https://widget.northeurope.cloudapp.azure.com:9443/v0.1.0/mobile-money-widget-mtn.js"></script>
+    @endif
 </head>
 <body>
     <div>
