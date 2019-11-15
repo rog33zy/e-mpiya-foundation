@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\ApiProvider;
+use App\MtnProductSubscription;
 use Illuminate\Http\Request;
 
 class MTNMomoController extends Controller
@@ -17,7 +19,7 @@ class MTNMomoController extends Controller
     }
 
     /**
-     * Show the form for making MTN payment.
+     * Show the form for MTN Collections Widget.
      *
      * @return \Illuminate\Http\Response
      */
@@ -32,7 +34,7 @@ class MTNMomoController extends Controller
     }
 
     /**
-     * Show the form for making MTN payment.
+     * Show the form for making MTN Collections.
      *
      * @return \Illuminate\Http\Response
      */
@@ -47,7 +49,7 @@ class MTNMomoController extends Controller
     }
 
     /**
-     * Show the form for making MTN payment.
+     * Show the form for making MTN Disbursements.
      *
      * @return \Illuminate\Http\Response
      */
@@ -62,7 +64,7 @@ class MTNMomoController extends Controller
     }
 
     /**
-     * Show the form for making MTN payment.
+     * Show the form for making MTN Remittances.
      *
      * @return \Illuminate\Http\Response
      */
@@ -74,5 +76,22 @@ class MTNMomoController extends Controller
         $data['header'] = 'Remittances Demo';
 		
         return view('mtn.remittances', $data);
+    }
+
+    /**
+     * Show the form for MTN Settings.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function apiSettings()
+    {
+		// User
+        $data['user'] = auth()->user();
+        // API data
+        $data['api_data'] = ApiProvider::all()->first();
+        // header
+        $data['header'] = 'MTN API Settings';
+		
+        return view('mtn.settings', $data);
     }
 }

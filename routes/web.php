@@ -30,6 +30,10 @@ Route::get('/mtn/collections', 'MTNMomoController@collections')->name('mtn_colle
 Route::get('/mtn/dibursements', 'MTNMomoController@disbursements')->name('mtn_disbursements');
 Route::get('/mtn/remittances', 'MTNMomoController@remittances')->name('mtn_remittances');
 
+// MTN API Admin
+Route::get('/mtn/settings', 'MTNMomoController@apiSettings')->name('mtn_api_settings');
+Route::post('/mtn/settings/post', 'MTNRequestController@postMtnApiSettings')->name('post_mtn_api_settings');
+
 // MTN API Demo Routes
 Route::post('/mtn/deposit/response', 'MTNResponseController@mTNDepositResponse')->name('post_mtn_deposit_response');
 Route::post('/mtn/payment/response', 'MTNResponseController@mTNPaymentResponse')->name('post_mtn_payment_response');

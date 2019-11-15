@@ -497,6 +497,7 @@ class ComposerStaticInit61508a875cac2768fbbfd67fd4b981a4
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\MTNMomoController' => __DIR__ . '/../..' . '/app/Http/Controllers/MTNMomoController.php',
         'App\\Http\\Controllers\\MTNRequestController' => __DIR__ . '/../..' . '/app/Http/Controllers/MTNRequestController.php',
         'App\\Http\\Controllers\\MTNResponseController' => __DIR__ . '/../..' . '/app/Http/Controllers/MTNResponseController.php',
         'App\\Http\\Controllers\\ManagementController' => __DIR__ . '/../..' . '/app/Http/Controllers/ManagementController.php',

@@ -16,6 +16,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
+    'App\\Http\\Controllers\\MTNMomoController' => $baseDir . '/app/Http/Controllers/MTNMomoController.php',
     'App\\Http\\Controllers\\MTNRequestController' => $baseDir . '/app/Http/Controllers/MTNRequestController.php',
     'App\\Http\\Controllers\\MTNResponseController' => $baseDir . '/app/Http/Controllers/MTNResponseController.php',
     'App\\Http\\Controllers\\ManagementController' => $baseDir . '/app/Http/Controllers/ManagementController.php',
