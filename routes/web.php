@@ -26,15 +26,30 @@ Route::post('/mtn/payment/post', 'MTNRequestController@postMTNPayment')->name('p
 
 // New MTN API Routes
 Route::get('/mtn/collection-widget', 'MTNMomoController@collectionWidget')->name('mtn_collection_widget');
+
 Route::get('/mtn/collections', 'MTNMomoController@collections')->name('mtn_collections');
+Route::get('/mtn/collections/token', 'MTNMomoController@collectionsToken')->name('mtn_collections_token');
+Route::post('/mtn/collections/token/post', 'MTNMomoController@postremittancesToken')->name('post_mtn_collections_token');
+Route::post('/mtn/collections/post', 'MTNMomoController@postCollections')->name('post_mtn_collections');
+
 Route::get('/mtn/dibursements', 'MTNMomoController@disbursements')->name('mtn_disbursements');
+Route::get('/mtn/dibursements/token', 'MTNMomoController@disbursementsToken')->name('mtn_disbursements_token');
+Route::post('/mtn/dibursements/token/post', 'MTNMomoController@postremittancesToken')->name('post_mtn_disbursements_token');
+Route::post('/mtn/dibursements/post', 'MTNMomoController@postDisbursements')->name('post_mtn_disbursements');
+
 Route::get('/mtn/remittances', 'MTNMomoController@remittances')->name('mtn_remittances');
+Route::get('/mtn/remittances/token', 'MTNMomoController@remittancesToken')->name('mtn_remittances_token');
+Route::post('/mtn/remittances/token/post', 'MTNMomoController@postremittancesToken')->name('post_mtn_remittances_token');
+Route::post('/mtn/remittances/post', 'MTNMomoController@postRemittances')->name('post_mtn_remittances');
 
 // MTN API Admin
 Route::get('/mtn/settings', 'MTNMomoController@apiSettings')->name('mtn_api_settings');
 
 Route::get('/mtn/app/new', 'MTNMomoController@newMtnApp')->name('new_mtn_app');
 Route::post('/mtn/app/new/post', 'MTNMomoController@postNewMtnApp')->name('post_new_mtn_app');
+
+Route::get('/mtn/product/subscription/new', 'MTNMomoController@newMtnApiProductSubscription')->name('new_mtn_api_product_subscription');
+Route::post('/mtn/product/subscription/new/post', 'MTNMomoController@postNewMtnApiProductSubscription')->name('post_new_mtn_api_product_subscription');
 
 // MTN API Demo Routes
 Route::post('/mtn/deposit/response', 'MTNResponseController@mTNDepositResponse')->name('post_mtn_deposit_response');

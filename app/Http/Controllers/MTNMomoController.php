@@ -87,8 +87,10 @@ class MTNMomoController extends Controller
     {
 		// User
         $data['user'] = auth()->user();
-        // API data
+        // API Registered Apps
         $data['api_data'] = ApiProvider::all();
+        // API Product Subscriptions
+        $data['api_subscriptions'] = MtnProductSubscription::all();
         // header
         $data['header'] = 'MTN API Settings';
 		
@@ -107,7 +109,7 @@ class MTNMomoController extends Controller
         // header
         $data['header'] = 'New MTN API App';
 		
-        return view('mtn.new', $data);
+        return view('mtn.new_api_app', $data);
     }
 	
     /**
@@ -218,10 +220,10 @@ JSON;
                     return redirect()->back()->withInput()->with('create_error', 'Error Message: ' . $decoded_full_response->message . ' | Error Code: ' . $decoded_full_response->code);
                 }
             }
+            $api_key = $decoded_full_response->apiKey;
         } catch(\Exception $e) {
 			return redirect()->back()->withInput()->with('create_error', 'API User failed to create. ' . $e);
         }
-        $api_key = $decoded_full_response->apiKey;
 
         $mtn_app->api_key = $api_key;
 
@@ -232,6 +234,98 @@ JSON;
         $basic_auth = base64_encode($api_user_and_key);
         $mtn_app->basic_auth = $basic_auth;
         $mtn_app->save();
+		
+        return redirect()->route('mtn_api_settings');
+    }
+
+    /**
+     * Show the form for new MTN API App.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function newMtnApiProductSubscription()
+    {
+		// User
+        $data['user'] = auth()->user();
+        // header
+        $data['header'] = 'New MTN API Product Subscription';
+        // Registered API Apps
+        $data['api_providers'] = ApiProvider::all();
+		
+        return view('mtn.new_product_subscription', $data);
+    }
+	
+    /**
+     * MTN Collection API POST.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postNewMtnApiProductSubscription(Request $request)
+    {
+		$this->validate($request, [
+			'api_provider' => 'required|integer',
+			'product' => 'required|string',
+			'primary_key' => 'required|string',
+			'secondary_key' => 'required|string',
+		]);
+		// User
+        $user = auth()->user();
+
+		// JSON curl POST
+		function doJSONCurl2($host,$url,$basicAuth,$subscriptionKey,$postJSON = null){
+			$headers = array(
+                "Host: " . $host,
+                "Content-type: application/json",
+                "Authorization: " . $basicAuth,
+                "Ocp-Apim-Subscription-Key: " . $subscriptionKey,
+			); 
+			$CURL = curl_init();
+
+			curl_setopt($CURL, CURLOPT_URL, $url); 
+			curl_setopt($CURL, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); 
+			curl_setopt($CURL, CURLOPT_POST, 1); 
+			curl_setopt($CURL, CURLOPT_POSTFIELDS, $postJSON); 
+			curl_setopt($CURL, CURLOPT_HEADER, false); 
+			curl_setopt($CURL, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($CURL, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+			$jsonResponse = curl_exec($CURL); 
+
+			return $jsonResponse;
+        }
+        // New MTN Product Subscription
+        $mtn_product_subscription = new MtnProductSubscription;
+        // Select API App
+        $mtn_api_app = ApiProvider::find($request->api_provider);
+
+        // Create token data
+        $host_server = "sandbox.momodeveloper.mtn.com";
+        $request_url = "https://sandbox.momodeveloper.mtn.com/collection/token/";
+        $basic_auth = "Basic " . $mtn_api_app->basic_auth;
+        $subscription_key = $request->primary_key;
+        $target_environment = "sandbox";
+
+        try {
+            $full_response = doJSONCurl2($host_server, $request_url, $basic_auth, $subscription_key);
+            $decoded_full_response = json_decode($full_response);
+            if(!empty($decoded_full_response->statusCode)) {
+                if($decoded_full_response->message && $decoded_full_response->code) {
+                    return redirect()->back()->withInput()->with('create_error', 'Error Message: ' . $decoded_full_response->message . ' | Error Code: ' . $decoded_full_response->statusCode);
+                }
+            }
+            // Bearer Token
+            $bearer_token = $decoded_full_response->access_token;
+        } catch(\Exception $e) {
+			return redirect()->back()->withInput()->with('create_error', 'API User failed to create. ' . $e);
+        }
+        $mtn_product_subscription->api_provider_id = $request->api_provider;
+        $mtn_product_subscription->product = $request->product;
+        $mtn_product_subscription->primary_key = $request->primary_key;
+        $mtn_product_subscription->secondary_key = $request->secondary_key;
+        $mtn_product_subscription->bearer_token = $bearer_token;
+        $mtn_product_subscription->target_environment = $target_environment;
+        $mtn_product_subscription->save();
 		
         return redirect()->route('mtn_api_settings');
     }
