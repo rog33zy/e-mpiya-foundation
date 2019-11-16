@@ -16,8 +16,8 @@ class CreateApiProvidersTable extends Migration
         Schema::create('api_providers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('provider');
-            $table->string('api_user');
-            $table->string('api_key');
+            $table->string('api_user')->unique();
+            $table->string('api_key')->unique();
             $table->string('basic_auth');
             $table->string('callback_url');
             $table->timestamps();

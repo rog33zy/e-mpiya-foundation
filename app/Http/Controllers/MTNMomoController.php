@@ -161,7 +161,7 @@ class MTNMomoController extends Controller
         $collection_url = "https://sandbox.momodeveloper.mtn.com/collection/token/";
 
 		// JSON curl POST
-		function doJSONCurl($host,$url,$apiUser,$subscriptionKey,$postJSON){
+		function doJSONCurl($host,$url,$apiUser,$subscriptionKey,$postJSON = null){
 			$headers = array(
                 "Host: " . $host,
                 "Content-type: application/json",
@@ -182,7 +182,7 @@ class MTNMomoController extends Controller
 
 			return $jsonResponse;
         }
-        
+        // Create API User data
         $host_server = "sandbox.momodeveloper.mtn.com";
         $request_url = "https://sandbox.momodeveloper.mtn.com/v1_0/apiuser";
         $subscription_key = "1e8c4cbf2c6549f388b9f8d686e87144";
@@ -193,10 +193,11 @@ class MTNMomoController extends Controller
   "providerCallbackHost": "{$callback_url}"
 }
 JSON;
+        // Submit API User for creation
         try {
             $full_response = doJSONCurl($host_server, $request_url, $api_user, $subscription_key, $REQUEST_BODY);
             $decoded_full_response = json_decode($full_response);
-            if(!empty($decoded_full_response)) {
+            if(!empty($decoded_full_response->message)) {
                 if($decoded_full_response->message && $decoded_full_response->code) {
                     return redirect()->back()->withInput()->with('create_error', 'Error Message: ' . $decoded_full_response->message . ' | Error Code: ' . $decoded_full_response->code);
                 }
@@ -204,8 +205,24 @@ JSON;
         } catch(\Exception $e) {
 			return redirect()->back()->withInput()->with('create_error', 'API User failed to create. ' . $e);
         }
-        // API Key
-        $api_key = 'ddee4292edca4955abbff7191039cbe6';
+        // Create API Key data
+        $request_url = "https://sandbox.momodeveloper.mtn.com/v1_0/apiuser/{$api_user}/apikey";
+        $subscription_key = "1e8c4cbf2c6549f388b9f8d686e87144";
+        $callback_url = $request->callback_url;
+        // Create API Key
+        try {
+            $full_response = doJSONCurl($host_server, $request_url, $api_user, $subscription_key);
+            $decoded_full_response = json_decode($full_response);
+            if(!empty($decoded_full_response->message)) {
+                if($decoded_full_response->message && $decoded_full_response->code) {
+                    return redirect()->back()->withInput()->with('create_error', 'Error Message: ' . $decoded_full_response->message . ' | Error Code: ' . $decoded_full_response->code);
+                }
+            }
+        } catch(\Exception $e) {
+			return redirect()->back()->withInput()->with('create_error', 'API User failed to create. ' . $e);
+        }
+        $api_key = $decoded_full_response->apiKey;
+
         $mtn_app->api_key = $api_key;
 
         //API User and Key

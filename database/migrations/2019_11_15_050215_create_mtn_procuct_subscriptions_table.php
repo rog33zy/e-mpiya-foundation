@@ -15,6 +15,8 @@ class CreateMtnProcuctSubscriptionsTable extends Migration
     {
         Schema::create('mtn_product_subscriptions', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('api_provider_id');
+            $table->foreign('api_provider_id')->references('id')->on('api_providers');
             $table->string('product');
             $table->string('primary_key');
             $table->string('secondary_key');
