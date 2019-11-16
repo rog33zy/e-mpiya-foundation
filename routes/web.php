@@ -32,7 +32,9 @@ Route::get('/mtn/remittances', 'MTNMomoController@remittances')->name('mtn_remit
 
 // MTN API Admin
 Route::get('/mtn/settings', 'MTNMomoController@apiSettings')->name('mtn_api_settings');
-Route::post('/mtn/settings/post', 'MTNRequestController@postMtnApiSettings')->name('post_mtn_api_settings');
+
+Route::get('/mtn/app/new', 'MTNMomoController@newMtnApp')->name('new_mtn_app');
+Route::post('/mtn/app/new/post', 'MTNMomoController@postNewMtnApp')->name('post_new_mtn_app');
 
 // MTN API Demo Routes
 Route::post('/mtn/deposit/response', 'MTNResponseController@mTNDepositResponse')->name('post_mtn_deposit_response');
