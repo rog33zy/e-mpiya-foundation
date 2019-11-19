@@ -1,7 +1,11 @@
 ---
 deployment:
       tasks:
-        - export DEPLOYPATH=/home/onezikoc/public_html/e-mpiya-foundation
-        - /bin/cp -r * $DEPLOYPATH
-        
-        
+        - export DEPLOYPATH=/home/onezikoc/public_html/e-mpiya-foundation  # Add /<app_folder> if required
+        - /bin/cp -r * $DEPLOYPATH                        #copy all recursively to $DEPLOYPATH
+#        - /bin/cp -r * $DEPLOYPATH/routes
+#        - /bin/cp -r * $DEPLOYPATH/app
+#        - /bin/cp -r * $DEPLOYPATH/Http/Controllers
+#        - /bin/cp -r * $DEPLOYPATH/public
+#        - /bin/cp -r * $DEPLOYPATH/resources
+#        - /bin/cp -r * $DEPLOYPATH/resources/views

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserMobile;
 use App\MTNRequest;
 use App\User;
 use Illuminate\Http\Request;
@@ -27,7 +28,9 @@ class MTNRequestController extends Controller
     public function mTNDeposit()
     {
 		// User
-		$data['user'] = auth()->user();
+		$data['user'] = $user = auth()->user();
+		// Use mobile
+		$data['user_mobile'] = UserMobile::whereUserId($user->id)->first();
 		
         return view('mtn.deposit', $data);
     }
@@ -40,7 +43,9 @@ class MTNRequestController extends Controller
     public function mTNPayment()
     {
 		// User
-		$data['user'] = auth()->user();
+		$data['user'] = $user = auth()->user();
+		// Use mobile
+		$data['user_mobile'] = UserMobile::whereUserId($user->id)->first();
 		
         return view('mtn.payment', $data);
     }
@@ -66,7 +71,7 @@ class MTNRequestController extends Controller
 				"Pragma: no-cache",
 				"SOAPAction: \"run\"",
 				"Content-length: ".strlen($postXML),
-				"Host:127.0.0.1",
+				"Host:" . $_SERVER['SERVER_NAME'],
 				"Cookie: sessionid=" . Session::getId(),
 			); 
 			$CURL = curl_init();
@@ -85,10 +90,11 @@ class MTNRequestController extends Controller
 		}
 		// logged in user
 		$user = auth()->user();
+		$data['user'] = $user;
 		
 		// client properties
 		// Request Payment Deposit URL
-		$REQDEPOSITURL = "http://localhost:8088/DepositMobileMoneyResponse";
+		$REQDEPOSITURL = route('post_mtn_deposit_response').'?format=soap';
 
 		// Mobile Money ECW Version(1.5/1.7)
 		$ECW_VERSION = 1.7;
@@ -212,9 +218,9 @@ class MTNRequestController extends Controller
 	</soapenv:Body>
 </soapenv:Envelope>
 XML;
-		try {
 			$full_response = doXMLCurl($REQDEPOSITURL, $REQUEST_BODY);
 			$response_xml = new \SimpleXMLElement(strstr($full_response, '<'), LIBXML_NOERROR);
+		try {
 		} catch (\Exception $e) {
 			return redirect()->back()->withInput()->with('server_error', 'Server Unreachable. Please try again.');
 		}
@@ -259,7 +265,7 @@ XML;
 				"Pragma: no-cache",
 				"SOAPAction: \"run\"",
 				"Content-length: ".strlen($postXML),
-				"Host:127.0.0.1",
+				"Host:" . $_SERVER['SERVER_NAME'],
 				"Cookie: sessionid=" . Session::getId(),
 			); 
 			$CURL = curl_init();
@@ -278,10 +284,11 @@ XML;
 		}
 		// logged in user
 		$user = auth()->user();
+		$data['user'] = $user;
 		
 		// client properties
 		// RequestPayment URL
-		$REQPAYEMENTURL = "http://localhost:8088/RequestPaymentResponse";
+		$REQPAYEMENTURL = route('post_mtn_payment_response');
 
 		// Mobile Money ECW Version(1.5/1.7)
 		$ECW_VERSION = 1.7;

@@ -12,48 +12,69 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @if(Route::currentRouteName() == 'mtn_collection_widget')
+    <!-- Scripts -->
+    <script src="{{ asset('js/mobile-money-widget-mtn.js') }}"></script>
+    @endif
 </head>
 <body>
-    <div id="app">
+    <div>
+		<!-- One Ziko Menu Bar -->
+		<?php $path = Request::path() ?>
 
-        {{-- top bar  --}}
-        <div class="top-bar">
+		{{-- top bar  --}}
+		<div class="top-bar">
 
-          <div class="top-bar-left">
-            <ul class="dropdown menu" data-dropdown-menu>
-              <li class="menu-text"><a href="{{ route('home') }}">{{ config('app.name', 'e-Mpiya OMPS') }}</a></li>
-            </ul>
-          </div>
+		<div class="top-bar-left">
+			<ul class="dropdown menu" data-dropdown-menu>
+			<li class="menu-text"><a href="{{ route('home') }}">{{ config('app.name', 'e-Mpiya OMPS') }}</a></li>
+			</ul>
+		</div>
 
-          <div class="top-bar-right">
-            <ul class="menu">
-                @if (Auth::guest())
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
-                @else
-                    <ul class="dropdown menu" data-dropdown-menu>
-                        <li>
-                            <a href="#">{{ Auth::user()->name }}</a>
-                            <ul class="menu">
-                                <li>
-                                    <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
+		<div class="top-bar-right">
+			<ul class="menu">
+				@if (Auth::guest())
+					<li><a href="{{ route('login') }}">Login</a></li>
+					<li><a href="{{ route('register') }}">Register</a></li>
+				@else
+					<ul class="dropdown menu" data-dropdown-menu>
+						<li>
+                            <?php $user_admin_access = App\Models\UserAccess::whereUserRoleId(1)->whereUserId(Auth::user()->id)->orderBy('user_role_id', 'ASC')->first() ?>
+							<a href="{{ route('view-user-profile', $user->username_slug) }}">{{ Auth::user()->username }}</a>
+							<ul class="menu">
+								@if (isset($user_admin_access))
+									<li><a href="{{ route('manage-users', Auth::user()->username_slug) }}">Manage Users</a></li>
+									<li><a href="{{ route('mtn_api_settings') }}">MTN API Settings</a></li>
+								@endif
+								<li><a href="{{ route('edit-user-profile', Auth::user()->username_slug) }}">Edit Profile</a></li>
+								<li>
+									<a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+										Logout
+									</a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                @endif
-            </ul>
-          </div>
+									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+										{{ csrf_field() }}
+									</form>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				@endif
+			</ul>
+		</div>
 
-        </div>
+		</div>
 
-        @yield('content')
+		<div class="container">
+
+			<div class="row">
+
+				@yield('user_profile_card')
+				@yield('content')
+
+			</div>
+
+		</div>
 
     </div>
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <con:soapui-workspace name="MoMo Services" soapui-version="5.5.0" xmlns:con="http://eviware.com/soapui/config">
   <con:settings/>
-  <con:project name="RequestPayment">F:/MoMo WSDL/MoMo Web Services/RequestPayment-soapui-project.xml</con:project>
-  <con:project name="DepositMobileMoney">F:/MoMo WSDL/MoMo Web Services/DepositMobileMoney-soapui-project.xml</con:project>
-  <con:project name="QueryThirdPartyAccount">F:/MoMo WSDL/MoMo Web Services/QueryThirdPartyAccount-soapui-project.xml</con:project>
-  <con:project name="ConfirmThirdPartyPayment">F:/MoMo WSDL/MoMo Web Services/ConfirmThirdPartyPayment-soapui-project.xml</con:project>
-  <con:project name="requestpaymentcompleted_service_1_0">F:/MoMo WSDL/MoMo Web Services/requestpaymentcompleted-service-1-0-soapui-project.xml</con:project>
+  <con:project name="RequestPayment">C:/xampp/htdocs/e-mpiya-foundation/MoMo WSDL/MoMo Web Services/RequestPayment-soapui-project.xml</con:project>
+  <con:project name="DepositMobileMoney">C:/xampp/htdocs/e-mpiya-foundation/MoMo WSDL/MoMo Web Services/DepositMobileMoney-soapui-project.xml</con:project>
+  <con:project name="QueryThirdPartyAccount">C:/xampp/htdocs/e-mpiya-foundation/MoMo WSDL/MoMo Web Services/QueryThirdPartyAccount-soapui-project.xml</con:project>
+  <con:project name="ConfirmThirdPartyPayment">C:/xampp/htdocs/e-mpiya-foundation/MoMo WSDL/MoMo Web Services/ConfirmThirdPartyPayment-soapui-project.xml</con:project>
+  <con:project name="requestpaymentcompleted_service_1_0">C:/xampp/htdocs/e-mpiya-foundation/MoMo WSDL/MoMo Web Services/requestpaymentcompleted-service-1-0-soapui-project.xml</con:project>
   <con:collectInfoForSupport>false</con:collectInfoForSupport>
 </con:soapui-workspace>
