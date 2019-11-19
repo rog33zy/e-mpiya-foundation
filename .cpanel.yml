@@ -9,5 +9,3 @@ deployment:
 #        - /bin/cp -r * $DEPLOYPATH/public
 #        - /bin/cp -r * $DEPLOYPATH/resources
 #        - /bin/cp -r * $DEPLOYPATH/resources/views
-        
-        
