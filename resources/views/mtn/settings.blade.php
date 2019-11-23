@@ -42,7 +42,7 @@
 										<td>{{ $data->api_user }}</td>
 										<td style="white-space: nowrap;">{{ $data->api_key }}</td>
 										<td style="white-space: nowrap;">{{ $data->basic_auth }}</td>
-										<td>{{ $data->callback_url }}</td>
+										<td>{{ $data->callback_url }} <br> <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(256)->generate($data->callback_url)) !!}"></td>
 										<td>{{ $data->created_at }}</td>
 									</tr>
 								@endforeach
