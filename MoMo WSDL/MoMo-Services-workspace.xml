@@ -6,5 +6,6 @@
   <con:project name="QueryThirdPartyAccount">C:/xampp/htdocs/e-mpiya-foundation/MoMo WSDL/MoMo Web Services/QueryThirdPartyAccount-soapui-project.xml</con:project>
   <con:project name="ConfirmThirdPartyPayment">C:/xampp/htdocs/e-mpiya-foundation/MoMo WSDL/MoMo Web Services/ConfirmThirdPartyPayment-soapui-project.xml</con:project>
   <con:project name="requestpaymentcompleted_service_1_0">C:/xampp/htdocs/e-mpiya-foundation/MoMo WSDL/MoMo Web Services/requestpaymentcompleted-service-1-0-soapui-project.xml</con:project>
+  <con:project name="REST Project 1">C:/MERN/calvary-greetings-og/calvary-greetings-rest-api.xml</con:project>
   <con:collectInfoForSupport>false</con:collectInfoForSupport>
 </con:soapui-workspace>
