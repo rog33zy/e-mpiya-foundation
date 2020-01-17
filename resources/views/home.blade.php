@@ -37,14 +37,17 @@
 			@endif
 			<div class="medium-12 column">
 				<ul class="vertical menu">
-					<h4>Old SOAP API</h4>
+					<h4>MTN Old SOAP API</h4>
 					<li><a href="{{ route('mtn_deposit') }}">Deposit MTN Money</a></li>
 					<li><a href="{{ route('mtn_payment') }}">MTN Bill Payment API initiated by Partner</a></li>
-					<h4>New JSON API</h4>
+					<h4>MTN New MoMoS JSON API</h4>
 					<li><a href="{{ route('mtn_collection_widget') }}">Collection Widget</a></li>
 					<li><a href="{{ route('mtn_collections') }}">Collections</a></li>
 					<li><a href="{{ route('mtn_disbursements') }}">Disbursements</a></li>
 					<li><a href="{{ route('mtn_remittances') }}">Remittances</a></li>
+					<h4>Flutterwave</h4>
+					<li><a href="{{ route('rave_inline') }}">Rave Inline</a></li>
+					<li><a href="{{ route('rave_standard') }}">Rave Standard</a></li>
 				</ul>
 			</div>
 		</div>

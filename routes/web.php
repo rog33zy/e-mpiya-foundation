@@ -42,6 +42,10 @@ Route::get('/mtn/remittances/token', 'MTNMomoController@remittancesToken')->name
 Route::post('/mtn/remittances/token/post', 'MTNMomoController@postremittancesToken')->name('post_mtn_remittances_token');
 Route::post('/mtn/remittances/post', 'MTNMomoController@postRemittances')->name('post_mtn_remittances');
 
+// Rave by Flutterwave Routes
+Route::get('/rave/inline', 'RaveController@inline')->name('rave_inline');
+Route::get('/rave/standard', 'RaveController@standard')->name('rave_standard');
+
 // QR Code Generator
 //Route::get('/mtn/collections', 'MTNMomoController@qrCodeGenerate')->name('qr_code_generate');
 
