@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// MTN MoMo Middleware routes
+Route::get('/momo/collection', 'MomoMiddlewareController@collection')->name('momo_middleware_collection');
+Route::get('/momo/disbursement', 'MomoMiddlewareController@disbursement')->name('momo_middleware_disbusement');
