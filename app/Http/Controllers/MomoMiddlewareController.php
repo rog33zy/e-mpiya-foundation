@@ -155,7 +155,7 @@ class MomoMiddlewareController extends Controller
             }
         }
         // Request To Pay
-        $amount = 500;
+        $amount = "{$request->input('amount')}";
         $currency = "EUR";
         $number = "{$request->input('number')}";
         $host_server = "sandbox.momodeveloper.mtn.com";
@@ -336,7 +336,7 @@ class MomoMiddlewareController extends Controller
             }
         }
         // Request To Pay
-        $amount = 500;
+        $amount = "{$request->input('amount')}";
         $currency = "EUR";
         $number = "{$request->input('number')}";
         $host_server = "sandbox.momodeveloper.mtn.com";
