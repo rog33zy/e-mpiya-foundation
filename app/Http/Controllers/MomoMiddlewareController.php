@@ -355,8 +355,8 @@ class MomoMiddlewareController extends Controller
                 "partyIdType": "MSISDN",
                 "partyId": "{$number}"
             },
-            "payerMessage": "Disbursement of K{$amount}",
-            "payeeNote": "Disbursement of K{$amount} from {$number}"
+            "payerMessage": "Disbursement of K{$amount} to {$number}",
+            "payeeNote": "Received Disbursement of K{$amount}"
         }
         json;
         
@@ -365,7 +365,7 @@ class MomoMiddlewareController extends Controller
             $full_response = doJSONCurlDisburse($host_server, $request_url, $bearer_token, $reference_id, $target_environment, $subscription_key, $REQUEST_BODY);
             $decoded_full_response = json_decode($full_response);
             if($decoded_full_response->code == "202") {
-                $app_data = array("amount"=>"{$amount}","currency"=>"{$currency}","externalId"=>"{$timestamp}","partyId"=>"{$number}","payerMessage"=>"Payment of K{$amount}","payeeNote"=>"Payment of K{$amount} by {$number}","X-Reference-Id"=>"{$reference_id}");
+                $app_data = array("amount"=>"{$amount}","currency"=>"{$currency}","externalId"=>"{$timestamp}","partyId"=>"{$number}","payerMessage"=>"Disbursement of K{$amount} to {$number}","payeeNote"=>"Received Disbursement of K{$amount}","X-Reference-Id"=>"{$reference_id}");
 
                 return response($app_data,200, ['Content-Type' => 'application/json']);
             } else {
