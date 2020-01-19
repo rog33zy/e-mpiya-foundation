@@ -193,8 +193,6 @@ class MomoMiddlewareController extends Controller
         } catch(\Exception $e) {
             return 'Payment failed! ' . $e;
         }
-		
-        return response($data,200, ['Content-Type' => 'application/json']);
     }
 
     /**
@@ -205,7 +203,7 @@ class MomoMiddlewareController extends Controller
     public function disbursement()
     {
         // header
-        $data['header'] = "Disbursements Demo";
+        $data = "disbursements-demo";
 		
         return response($data,200, ['Content-Type' => 'application/json']);
     }
