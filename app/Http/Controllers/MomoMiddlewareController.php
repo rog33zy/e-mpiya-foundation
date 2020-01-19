@@ -299,8 +299,8 @@ class MomoMiddlewareController extends Controller
             return response($error_data,200, ['Content-Type' => 'application/json']);
         }
         
-        // JSON curl Payment POST
-        function doJSONCurlPay($host,$url,$bearerToken,$referenceId,$targetEnvironment,$subscriptionKey,$postJSON = null){
+        // JSON curl Disbursement POST
+        function doJSONCurlDisburse($host,$url,$bearerToken,$referenceId,$targetEnvironment,$subscriptionKey,$postJSON = null){
             $headers = array(
                 "Host: " . $host,
                 "Content-type: application/json",
@@ -335,12 +335,12 @@ class MomoMiddlewareController extends Controller
                 return $jsonResponse;
             }
         }
-        // Request To Pay
+        // Disburse mobile money
         $amount = "{$request->input('amount')}";
         $currency = "EUR";
         $number = "{$request->input('number')}";
         $host_server = "sandbox.momodeveloper.mtn.com";
-        $request_url = "https://sandbox.momodeveloper.mtn.com/collection/v1_0/requesttopay";
+        $request_url = "https://sandbox.momodeveloper.mtn.com/disbursement/v1_0/transfer";
         $reference_id = gen_uuid();
         $target_environment = "sandbox";
         // $callback_url = $callback_url;
@@ -351,18 +351,18 @@ class MomoMiddlewareController extends Controller
             "amount": "{$amount}",
             "currency": "{$currency}",
             "externalId": "{$timestamp}",
-            "payer": {
+            "payee": {
                 "partyIdType": "MSISDN",
                 "partyId": "{$number}"
             },
-            "payerMessage": "Payment of K{$amount}",
-            "payeeNote": "Payment of K{$amount} by {$number}"
+            "payerMessage": "Disbursement of K{$amount}",
+            "payeeNote": "Disbursement of K{$amount} from {$number}"
         }
         json;
         
         // Submit payment json message
         try {
-            $full_response = doJSONCurlPay($host_server, $request_url, $bearer_token, $reference_id, $target_environment, $subscription_key, $REQUEST_BODY);
+            $full_response = doJSONCurlDisburse($host_server, $request_url, $bearer_token, $reference_id, $target_environment, $subscription_key, $REQUEST_BODY);
             $decoded_full_response = json_decode($full_response);
             if($decoded_full_response->code == "202") {
                 $app_data = array("amount"=>"{$amount}","currency"=>"{$currency}","externalId"=>"{$timestamp}","partyId"=>"{$number}","payerMessage"=>"Payment of K{$amount}","payeeNote"=>"Payment of K{$amount} by {$number}","X-Reference-Id"=>"{$reference_id}");
