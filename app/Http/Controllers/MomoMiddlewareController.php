@@ -205,7 +205,7 @@ class MomoMiddlewareController extends Controller
     public function disbursement()
     {
         // header
-        $data['header'] = 'Disbursements Demo';
+        $data['header'] = "Disbursements Demo";
 		
         return response($data,200, ['Content-Type' => 'application/json']);
     }
