@@ -194,18 +194,4 @@ class MomoMiddlewareController extends Controller
             return 'Payment failed! ' . $e;
         }
     }
-
-    /**
-     * Show the form for making MTN Disbursements.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function disbursement()
-    {
-        // header
-        $data = "disbursements-demo";
-		
-        return response($data,200, ['Content-Type' => 'application/json']);
-    }
 }
-?>
